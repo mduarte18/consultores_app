@@ -1,0 +1,63 @@
+
+<div class="container">
+  <div class="row justify-content-center  m-4 animated fadeInDown">
+  <div class="col-md-6">
+  <div class="card">
+  <header class="card-header">
+    <a [routerLink]="['/login']" class="float-right btn btn-outline-primary mt-1">Inicia Sesión</a>
+    <h4 class="card-title mt-2">¡Registrate!</h4>
+  </header>
+  <article class="card-body">
+  <form>
+      <div class="form-group">
+          <label><small>Documento de identidad</small></label>
+            <input type="text" class="form-control" placeholder="" id="ci" name="ci" [(ngModel)]="consultant.identification_document">
+        </div>
+    <div class="form-row">
+      <div class="col form-group">
+        <label>Nombres </label>
+          <input type="text" class="form-control" placeholder="" id="name" name="name" [(ngModel)]="consultant.name">
+      </div> <!-- form-group end.// -->
+      <div class="col form-group">
+        <label>Apellidos</label>
+          <input type="text" class="form-control" placeholder=""  id="lastname" name="lastname" [(ngModel)]="consultant.lastname">
+      </div> <!-- form-group end.// -->
+    </div> <!-- form-row end.// -->
+    <div class="form-group">
+      <label>Correo Electrónico</label>
+      <input type="email" class="form-control" placeholder=""  id="email" name="email" [(ngModel)]="consultant.email">
+    </div> <!-- form-group end.// -->
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Fecha de Nacimiento</label>
+        <input type="date" class="form-control"  id="birthdate" name="birthdate" [(ngModel)]="consultant.birthdate">
+      </div> <!-- form-group end.// -->
+      <div class="form-group col-md-6">
+        <label>Numero de Telefóno</label>
+        <input type="phone" class="form-control"  id="phone" name="phone" [(ngModel)]="consultant.phone_number">
+      </div>
+    </div> <!-- form-row.// -->
+    <div class="form-group">
+      <label>Contraseña</label>
+        <input class="form-control" type="password"  id="pass" name="pass" [(ngModel)]="consultant.password">
+    </div> <!-- form-group end.// -->
+    <div class="form-group">
+      <label>Repita su Contraseña</label>
+        <input class="form-control" type="password"  id="re-pass" name="re-pass" [className]="(consultant.password!==rePass)&&(rePass)?' form-control border-danger':' form-control'" [(ngModel)]="rePass">
+        <small [className]="(consultant.password!==rePass)&&(rePass)?' text-danger':' d-none'">Su contraseña no coincide.</small>
+    </div> <!-- form-group end.// -->
+      <div class="form-group">
+          <button type="submit"  [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?' btn btn-primary btn-block  ':' btn btn-primary btn-block disabled'"  id="send-data" (click)="registerUser()"> Register  </button>
+      </div> <!-- form-group// -->
+      <small class="text-muted">Al hacer click en registrar esta deacuerdo con nuestras politicas de uso y privacidad.</small>
+  </form>
+  </article> <!-- card-body end .// -->
+  <div class="border-top card-body text-center">¿Tienes una cuenta? <a [routerLink]="['/login']">Inicia Sesión</a></div>
+  </div> <!-- card.// -->
+  </div> <!-- col.//-->
+
+  </div> <!-- row.//-->
+
+
+  </div>
+  <!--container end.//-->

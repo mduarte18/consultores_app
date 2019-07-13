@@ -1,0 +1,39 @@
+<div class="text-center main-body  animated fadeInDown">
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+
+    <main role="main" class="inner cover py-3">
+      <h1 class="display-4">Ingresar con algun rol</h1>
+    </main>
+  </div>
+  <div class="container mt-5 p-5">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card  ">
+            <h5 class="card-header ">Asesor</h5>
+            <div class="card-body">
+              <h1 class="text-center text-info"><i class="fas fa-user-tie fa-4x"></i></h1>
+              <h5 class="card-title ">Ingresar como Asesor</h5>
+              <a class="btn btn-primary" [routerLink]="['/login/consultant']">Ingresar</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="card  ">
+            <h5 class="card-header ">Usuario</h5>
+            <div class="card-body">
+              <h1 class="text-center text-secondary"><i class="fas fa-user fa-4x	"></i></h1>
+              <h5 class="card-title">Ingresar como Usuario</h5>
+              <a class="btn btn-primary" [routerLink]="['/login/user']">Ingresar</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row py-4">
+        <div class="col-12">
+          <a class="btn btn-secondary" [routerLink]="['/home']">Volver al Inicio</a>
+        </div>
+      </div>
+    </div>
+
+</div>

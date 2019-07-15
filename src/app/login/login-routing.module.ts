@@ -1,3 +1,4 @@
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 import { LoginConsultantComponent } from './login-consultant/login-consultant.component';
 import { LoginUserComponent } from './login-user/login-user.component';
 import { ChooseLoginComponent } from './choose-login/choose-login.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'consultant',
     component: LoginConsultantComponent
+  },
+  {
+    path: 'admin',
+    component: LoginAdminComponent
   }
 ];
 

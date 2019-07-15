@@ -7,9 +7,10 @@ import { LoginUserComponent } from './login-user/login-user.component';
 import { LoginConsultantComponent } from './login-consultant/login-consultant.component';
 import { ChooseLoginComponent } from './choose-login/choose-login.component';
 import { FormsModule } from '@angular/forms';
+import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 @NgModule({
-  declarations: [LoginUserComponent, LoginConsultantComponent, ChooseLoginComponent],
+  declarations: [LoginUserComponent, LoginConsultantComponent, ChooseLoginComponent, LoginAdminComponent],
   imports: [
     CommonModule,
     FormsModule,

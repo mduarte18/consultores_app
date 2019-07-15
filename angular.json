@@ -25,11 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/animate.css"
-              // "src/assets/vendor/datatables/dataTables.bootstrap4.css",
-              // "src/assets/vendor/fontawesome-free/css/all.min.css",
+              "src/assets/animate.css",
+              "src/assets/css/sb-admin.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/vendor/bootstrap/"
+            ]
           },
           "configurations": {
             "production": {

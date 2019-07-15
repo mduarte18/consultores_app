@@ -45,7 +45,7 @@ export class RegisterUserComponent implements OnInit {
         } else {
           console.log(result.data);
           this.toaster.success('¡Registro Exitoso!');
-          setTimeout(() => { location.href = '/login'; }, 3000);
+          setTimeout(() => { location.href = '/login'; }, 5000);
           // location.href = '/login';
         }
       },

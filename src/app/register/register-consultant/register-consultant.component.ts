@@ -61,7 +61,7 @@ export class RegisterConsultantComponent implements OnInit {
         } else {
           console.log(result.data);
           this.toaster.success('¡Registro Exitoso!');
-          location.href = '/login';
+          setTimeout(() => { location.href = '/login'; }, 5000);
         }
       },
       error => {

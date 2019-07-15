@@ -23,6 +23,9 @@ export class GlobalService {
     if ('consultant' === type) {
       return this.httpClient.post(this.apiUrl + '/consultant/singin', { email: mail, password: pass });
     }
+    if ('admin' === type) {
+      return this.httpClient.post(this.apiUrl + '/user/admin_singin', { email: mail, password: pass, role: 'AD' });
+    }
     return null;
   }
 

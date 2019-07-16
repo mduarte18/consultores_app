@@ -32,7 +32,7 @@ export class LoginAdminComponent implements OnInit {
             console.log('soportado'); // LocalStorage disponible
             localStorage.setItem('user_data', JSON.stringify(result));
             localStorage.setItem('user_type', 'A');
-            GLOBAL.redirectTo('/dashboard/admin');
+            GLOBAL.redirectTo('/admin');
           } else {
             console.log('no soportado');   // LocalStorage no soportado en este navegador
           }

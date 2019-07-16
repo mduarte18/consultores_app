@@ -3,6 +3,7 @@ export class GLOBAL {
 
   static redirectTo(url) {
     const landingUrl = 'http://' + window.location.host + url;
+    console.log(landingUrl);
     window.location.href = landingUrl;
   }
 

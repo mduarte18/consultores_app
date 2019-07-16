@@ -32,7 +32,7 @@ export class LoginUserComponent implements OnInit {
             console.log('soportado'); // LocalStorage disponible
             localStorage.setItem('user_data', JSON.stringify(result));
             localStorage.setItem('user_type', 'U');
-            GLOBAL.redirectTo('/dashboard/user');
+            GLOBAL.redirectTo('/user');
           } else {
             console.log('no soportado');   // LocalStorage no soportado en este navegador
           }

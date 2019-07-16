@@ -1,8 +1,8 @@
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
+    <ul class="sidebar navbar-nav" style="position: absolute;height: 100%;">
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" [routerLink]="['dashboard']">
           <i class="fas fa-fw fa-tachometer-alt"></i>&nbsp;
           <span>Inicio</span>
         </a>
@@ -24,19 +24,19 @@
         </div>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" [routerLink]="['requests']">
           <i class="fas fa-headset"></i>&nbsp;
           <span>Solicitudes </span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" [routerLink]="['balance']">
           <i class="fas fa-piggy-bank"></i>&nbsp;
           <span>Saldo</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" [routerLink]="['history']">
       <i class="fas fa-history"></i>&nbsp;
-          <span>Saldo</span></a>
+          <span>Historial</span></a>
       </li>
 
     </ul>

@@ -5,9 +5,15 @@ import { ConsultantDashboardRoutingModule } from './consultant-dashboard-routing
 import { CDashboardComponent } from './c-dashboard/c-dashboard.component';
 import { CsidebarComponent } from './csidebar/csidebar.component';
 import { CtopbarComponent } from './ctopbar/ctopbar.component';
+import { HistoryComponent } from './history/history.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
+import { RequestsComponent } from './requests/requests.component';
+import { BalanceComponent } from './balance/balance.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [CDashboardComponent, CsidebarComponent, CtopbarComponent],
+  declarations: [CDashboardComponent, CsidebarComponent, CtopbarComponent, HistoryComponent, DashboardComponent, FooterComponent, RequestsComponent, BalanceComponent, ProfileComponent],
   imports: [
     CommonModule,
     ConsultantDashboardRoutingModule

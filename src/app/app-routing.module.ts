@@ -21,15 +21,15 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then(m => m.RegisterModule)
   },
   {
-    path: 'dashboard/consultant',
+    path: 'consultant',
     loadChildren: () => import('./consultant-dashboard/consultant-dashboard.module').then(m => m.ConsultantDashboardModule)
   },
   {
-    path: 'dashboard/user',
+    path: 'user',
     loadChildren: () => import('./user-dashboard/user-dashboard.module').then(m => m.UserDashboardModule)
   },
   {
-    path: 'dashboard/admin',
+    path: 'admin',
     loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
   },
   {

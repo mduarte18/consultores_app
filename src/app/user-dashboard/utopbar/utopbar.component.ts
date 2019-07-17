@@ -1,3 +1,4 @@
+import { User } from './../../interfaces/User';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UtopbarComponent implements OnInit {
 
-  constructor() { }
+  user : User;
+
+  constructor() {
+    this.user=JSON.parse(localStorage.getItem('user_data'));
+  }
 
   ngOnInit() {
   }

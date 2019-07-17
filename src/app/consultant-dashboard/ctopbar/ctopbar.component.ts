@@ -1,3 +1,4 @@
+import { Consultant } from './../../interfaces/Consultant';
 import { User } from './../../interfaces/User';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CtopbarComponent implements OnInit {
 
-  user : User;
+  user : Consultant;
 
   constructor() {
     this.user=JSON.parse(localStorage.getItem('user_data'));

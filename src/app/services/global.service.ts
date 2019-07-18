@@ -30,7 +30,10 @@ export class GlobalService {
   }
 
   create_user(user: User): Observable<any> {
-    console.log(this.apiUrl);
+    return this.httpClient.post(this.apiUrl + '/user', user);
+  }
+
+  new_appointment(user: User): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/user', user);
   }
 }

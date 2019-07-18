@@ -12,12 +12,15 @@ import { PaymentAppointmentComponent } from './payment-appointment/payment-appoi
 import { BalanceComponent } from './balance/balance.component';
 import { TansactionsComponent } from './tansactions/tansactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [UDashboardComponent, UtopbarComponent, UsidebarComponent, ProfileComponent, NewAppointmentComponent, HistoryComponent, PaymentAppointmentComponent, BalanceComponent, TansactionsComponent, DashboardComponent],
   imports: [
     CommonModule,
-    UserDashboardRoutingModule
+    UserDashboardRoutingModule,
+    NgbModule
   ]
 })
 export class UserDashboardModule { }

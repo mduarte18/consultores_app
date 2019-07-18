@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'app-tansactions',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TansactionsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService : NgbModal) {
+  }
 
   ngOnInit() {
+  }
+
+  open(content) {
+    console.log(content);
+    this.modalService.open(content);
+  }
+  sendDeposit(){
+    console.log('enviado');
+    this.modalService.dismissAll();
   }
 
 }

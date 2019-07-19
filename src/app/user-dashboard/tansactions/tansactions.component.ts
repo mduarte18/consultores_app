@@ -24,4 +24,9 @@ export class TansactionsComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+   close() {
+    // console.log(content);
+    this.modalService.dismissAll();
+  }
+
 }

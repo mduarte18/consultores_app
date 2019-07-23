@@ -1,3 +1,32 @@
-<p>
-  history works!
-</p>
+<div id="content-wrapper">
+
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Historial</a>
+    </li>
+  </ol>
+
+  <div class="d-flex">
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Movimiento</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+              <ng-container *ngFor="let history of histories$ ">
+            <tr>
+              <td>{{history.movement_type}}</td>
+              <td>{{history.description}}</td>
+              <td>{{history.created_at}}</td>
+            </tr>
+            </ng-container>
+          </tbody>
+        </table>
+  </div>
+
+
+</div>

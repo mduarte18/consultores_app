@@ -1,3 +1,4 @@
+import { Observable, Observer } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,6 +9,10 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   constructor() { }
+
+  time = new Observable<string>((observer: Observer<string>) => {
+    setInterval(() => observer.next(new Date().toString()), 1000);
+  });
 
   ngOnInit() {
   }

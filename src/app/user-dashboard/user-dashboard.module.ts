@@ -1,3 +1,4 @@
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -12,12 +13,18 @@ import { PaymentAppointmentComponent } from './payment-appointment/payment-appoi
 import { BalanceComponent } from './balance/balance.component';
 import { TansactionsComponent } from './tansactions/tansactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ConsultantsComponent } from './consultants/consultants.component';
+
 
 @NgModule({
-  declarations: [UDashboardComponent, UtopbarComponent, UsidebarComponent, ProfileComponent, NewAppointmentComponent, HistoryComponent, PaymentAppointmentComponent, BalanceComponent, TansactionsComponent, DashboardComponent],
+  declarations: [UDashboardComponent, UtopbarComponent, UsidebarComponent, ProfileComponent, NewAppointmentComponent, HistoryComponent, PaymentAppointmentComponent, BalanceComponent, TansactionsComponent, DashboardComponent, ConsultantsComponent],
   imports: [
     CommonModule,
-    UserDashboardRoutingModule
+    UserDashboardRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserDashboardModule { }

@@ -8,6 +8,7 @@ import { UDashboardComponent } from './u-dashboard/u-dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PaymentAppointmentComponent } from './payment-appointment/payment-appointment.component';
+import { ConsultantsComponent } from './consultants/consultants.component';
 
 const routes: Routes = [{
   path: '',
@@ -40,6 +41,10 @@ const routes: Routes = [{
     {
       path: 'new_appointment',
       component: NewAppointmentComponent
+    },
+    {
+      path: 'consultants',
+      component: ConsultantsComponent
     },
 
   ]

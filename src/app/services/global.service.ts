@@ -2,8 +2,7 @@ import { User } from './../interfaces/User';
 import { GLOBAL } from './../global/GLOBAL';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Consultant } from '../interfaces/Consultant';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +29,22 @@ export class GlobalService {
   }
 
   create_user(user: User): Observable<any> {
-    console.log(this.apiUrl);
     return this.httpClient.post(this.apiUrl + '/user', user);
+  }
+
+  new_appointment(user: User): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/user', user);
+  }
+
+  getUserHistories(user_id: any): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/historyuser/all_histories', { user_id: user_id });
+  }
+
+  uploadDeposit(params): Observable<any>{
+    return this.httpClient.post(this.apiUrl + '/deposit/upload', params);
+  }
+
+  getBalanceUser(user_id): Observable<any>{
+    return this.httpClient.post(this.apiUrl+'/balance_user/get_balance',{user_id: user_id} );
   }
 }

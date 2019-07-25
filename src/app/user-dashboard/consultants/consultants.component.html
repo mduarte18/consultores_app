@@ -1,1 +1,82 @@
-<p>consultants works!</p>
+<div id="content-wrapper">
+
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Listado de Asesores</a>
+    </li>
+  </ol>
+
+  <div class="row d-flex flex-row justify-content-center">
+    <div class="col-5 d-flex justify-content-center align-items-center">
+      <button class="btn btn-success w-75" (click)="getConsultantByType('AP')">Asesores
+        de Psicologia</button>
+    </div>
+    <div class="col-5 d-flex justify-content-center align-items-center">
+      <button class="btn btn-info w-75" (click)="getConsultantByType('AS')">Asesores
+        Legales</button>
+    </div>
+  </div>
+  <hr class="hr-dark">
+
+  <div class="row d-flex justify-content-center">
+    <div *ngFor="let consultant of consultants" class="col-md-3 m-1">
+      <div class="card">
+        <div class="card-body text-center">
+          <i class="fas fa-user-tie fa-2x text-info"></i>
+          <h5 class="card-title">{{consultant.name}} {{consultant.lastname}}</h5>
+          <button class="btn btn-link text-center text-primary" href="#">Ver
+            Información</button>
+          <hr class="hr-light">
+          <button class="btn btn-secondary" data-toggle="modal"
+            [attr.data-consultantid]="consultant.id"
+            (click)="open(content,$event)">Solcitar Cita.</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<ng-template #content let-modal class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Solicitar Cita</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+        <div class="form-group">
+            <label for="date">Titulo</label>
+            <input id="text" class="form-control" name="title" type="title" [(ngModel)]="dating.title" >
+          </div>
+          <div class="form-group">
+              <label for="date">Descripcion</label>
+              <textarea id="summary" class="form-control" name="summary" [(ngModel)]="dating.summary" ></textarea>
+            </div>
+      <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label for="date">Fecha</label>
+                <input id="date" class="form-control" name="date" type="date" [(ngModel)]="dating.for_date" >
+              </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="time">Hora</label>
+                <input id="time" class="form-control" name="time" type="time" [(ngModel)]="dating.for_time">
+              </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success"
+      (click)="sendRequest()">Enviar solicitud</button>
+  </div>
+</ng-template>

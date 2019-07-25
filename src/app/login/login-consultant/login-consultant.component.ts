@@ -46,7 +46,7 @@ export class LoginConsultantComponent implements OnInit {
 
       },
       error => {
-        this.toaster.error(error, 'Error: ');
+        this.toaster.error(error.message, 'Error: ');
         console.log(error);
       }
     );

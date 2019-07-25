@@ -1,3 +1,4 @@
+import { Dating } from './../interfaces/Dating';
 import { User } from './../interfaces/User';
 import { GLOBAL } from './../global/GLOBAL';
 import { HttpClient } from '@angular/common/http';
@@ -46,5 +47,17 @@ export class GlobalService {
 
   getBalanceUser(user_id): Observable<any>{
     return this.httpClient.post(this.apiUrl+'/balance_user/get_balance',{user_id: user_id} );
+  }
+
+  updateUserProfile(user:User):Observable<any>{
+    return this.httpClient.put(this.apiUrl+'/user/'+user.id, user);
+  }
+
+  getAllConsultants(params): Observable<any>{
+    return this.httpClient.post(this.apiUrl + '/consultant/all_consultants', params);
+  }
+
+  new_dating(dating: Dating): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating', dating);
   }
 }

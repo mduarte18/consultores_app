@@ -13,4 +13,5 @@ export interface Consultant {
   updated_at?: string;
   validate: string;
   career_id: string;
+  career_name?: string;
 }

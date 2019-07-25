@@ -18,9 +18,7 @@ export class HistoryComponent implements OnInit {
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService) {
 
     this.user = JSON.parse(localStorage.getItem('user_data'));
-    setInterval(() => {
       this.getHistories();
-    }, 60000);
 
   }
 

@@ -49,6 +49,10 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl+'/balance_user/get_balance',{user_id: user_id} );
   }
 
+  getBalanceConsultant(consultant_id): Observable<any>{
+    return this.httpClient.post(this.apiUrl+'/balance_consultant/get_balance',{consultant_id: consultant_id} );
+  }
+
   updateUserProfile(user:User):Observable<any>{
     return this.httpClient.put(this.apiUrl+'/user/'+user.id, user);
   }

@@ -53,4 +53,23 @@ export class NewAppointmentComponent implements OnInit {
     )
   }
 
+  sendRequest(){
+    this.loader.show()
+    this.globalService.new_dating(this.dating).subscribe(
+      result => {
+        if('ok'===result){
+          this.loader.hide();
+          this.toaster.success('Solicitud Enviada.');
+          this.dating = {} as Dating;
+        }
+        console.log(result)
+      },
+      error => {
+        this.loader.hide();
+        this.toaster.error(error.message, 'Error: ');
+        console.log(error);
+      }
+    );
+  }
+
 }

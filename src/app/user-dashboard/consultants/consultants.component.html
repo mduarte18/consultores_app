@@ -58,17 +58,21 @@
               <label for="date">Descripcion</label>
               <textarea id="summary" class="form-control" name="summary" [(ngModel)]="dating.summary" ></textarea>
             </div>
+            <div class="form-group">
+                <label for="date">Fecha</label>
+                <input id="date" class="form-control" name="date" type="date" [(ngModel)]="dating.for_date" >
+              </div>
       <div class="row">
         <div class="col">
             <div class="form-group">
                 <label for="date">Fecha</label>
-                <input id="date" class="form-control" name="date" type="date" [(ngModel)]="dating.for_date" >
+                <input id="time_from" class="form-control" name="time_from" type="date" [(ngModel)]="dating.for_date" >
               </div>
         </div>
         <div class="col">
             <div class="form-group">
                 <label for="time">Hora</label>
-                <input id="time" class="form-control" name="time" type="time" [(ngModel)]="dating.for_time">
+                <input id="time_up" class="form-control" name="time_up" type="time" [(ngModel)]="dating.time_up">
               </div>
         </div>
       </div>

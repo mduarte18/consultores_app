@@ -4,7 +4,8 @@ export interface Dating {
   user_id: number;
   consultant_id: number;
   for_date: string;
-  for_time: string;
+  time_from: string;
+  time_up: string;
   title: string;
   summary: string;
   price?:number;

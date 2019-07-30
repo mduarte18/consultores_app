@@ -43,6 +43,10 @@ ngOnInit() {
 open(content,event) {
   this.tempDating.user_id=event.srcElement.dataset.userid;
   this.tempDating.consultant_id=this.user.id;
+  this.tempDating.title=event.srcElement.dataset.title;
+  this.tempDating.summary=event.srcElement.dataset.summary;
+
+  console.log(this.tempDating);
 
   this.modal.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
     console.log(result);
@@ -51,6 +55,11 @@ open(content,event) {
 
   });
 
+}
+
+close(){
+  this.modal.dismissAll();
+  this.tempDating= {} as Dating;
 }
 
 }

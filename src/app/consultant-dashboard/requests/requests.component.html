@@ -18,7 +18,8 @@
             [attr.data-datingid]="dating.id" [attr.data-title]="dating.title"
             [attr.data-summary]="dating.summary" [attr.data-price]="dating.price"
             [attr.data-for_date]="dating.for_date"
-            [attr.data-userid]="dating.for_date"
+            [attr.data-userid]="dating.user_id"
+            [attr.data-title]="dating.title"
             (click)="open(content,$event)">Ver detalles</button>
         </div>
       </div>
@@ -37,12 +38,11 @@
   <div class="modal-body">
     <form>
         <div class="form-group">
-            <label for="date">Titulo</label>
-            <input id="text" class="form-control" name="title" type="title"  >
+            <h2 for="date" class="text-center">{{tempDating.title}}</h2>
+            <!-- <input id="text" class="form-control" name="title" type="title"  > -->
           </div>
           <div class="form-group">
-              <label for="date">Descripcion</label>
-              <textarea id="summary" class="form-control" name="summary" ></textarea>
+              <h4 for="date" class="text-center">{{tempDating.summary}}</h4>
             </div>
             <div class="form-group">
                 <label for="date">Fecha</label>

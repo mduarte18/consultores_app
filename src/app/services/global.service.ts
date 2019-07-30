@@ -1,3 +1,4 @@
+import { Consultant } from './../interfaces/Consultant';
 import { Dating } from './../interfaces/Dating';
 import { User } from './../interfaces/User';
 import { GLOBAL } from './../global/GLOBAL';
@@ -41,6 +42,10 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/historyuser/all_histories', { user_id: user_id });
   }
 
+  getConsultantHistories(user_id: any): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/consultanthistory/all_histories', { consultant_id: user_id });
+  }
+
   uploadDeposit(params): Observable<any>{
     return this.httpClient.post(this.apiUrl + '/deposit/upload', params);
   }
@@ -57,11 +62,19 @@ export class GlobalService {
     return this.httpClient.put(this.apiUrl+'/user/'+user.id, user);
   }
 
+  updateConsultantProfile(user:Consultant):Observable<any>{
+    return this.httpClient.put(this.apiUrl+'/consultant/'+user.id, user);
+  }
+
   getAllConsultants(params): Observable<any>{
     return this.httpClient.post(this.apiUrl + '/consultant/all_consultants', params);
   }
 
   new_dating(dating: Dating): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/dating', dating);
+  }
+
+  getDatingsForConsultant(consultant_id): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/datings_by_consultant', {consultant_id:consultant_id});
   }
 }

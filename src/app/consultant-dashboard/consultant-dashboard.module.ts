@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -11,12 +12,16 @@ import { FooterComponent } from './footer/footer.component';
 import { RequestsComponent } from './requests/requests.component';
 import { BalanceComponent } from './balance/balance.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [CDashboardComponent, CsidebarComponent, CtopbarComponent, HistoryComponent, DashboardComponent, FooterComponent, RequestsComponent, BalanceComponent, ProfileComponent],
   imports: [
     CommonModule,
-    ConsultantDashboardRoutingModule
+    ConsultantDashboardRoutingModule,
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ConsultantDashboardModule { }

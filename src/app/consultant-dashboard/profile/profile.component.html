@@ -40,83 +40,88 @@
       <div class="tab-content">
         <div class="tab-pane active" id="home">
           <hr>
-          <form class="form" action="##" method="post" id="registrationForm">
+          <form class="form" action="#" method="post" id="registrationForm">
             <div class="form-group">
 
               <div class="col-xs-6">
-                <label for="first_name"><h4>First name</h4></label>
-                <input type="text" class="form-control" name="first_name"
-                  id="first_name" placeholder="first name" title="enter your
-                  first name if any.">
+                <label for="phone">Documento de Identificacion</label>
+                <input type="text" class="form-control" name="identification_document"
+                  id="identification_document" placeholder="Documento de Identificacion"
+                  [(ngModel)]="consultant.identification_document" >
               </div>
             </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="first_name">Nombres</label>
+                  <input type="text" class="form-control" name="name"
+                    id="name" placeholder="Nombres"
+                    [(ngModel)]="consultant.name">
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label for="last_name">Apellidos</label>
+                  <input type="text" class="form-control" name="lastname"
+                    id="lastname" placeholder="Apellidos" [(ngModel)]="consultant.lastname">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <div class="col-xs-6">
+                    <label for="mobile">Telefono</label>
+                    <input type="text" class="form-control"
+                      name="phone_number" id="phone_number" placeholder="enter mobile number" [(ngModel)]="consultant.phone_number">
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+
+                  <div class="col-xs-6">
+                    <label for="birthdate">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="birthdate"
+                      name="birthdate"
+                      placeholder="Fecha de nacimiento" [(ngModel)]="consultant.birthdate">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
             <div class="form-group">
 
               <div class="col-xs-6">
-                <label for="last_name"><h4>Last name</h4></label>
-                <input type="text" class="form-control" name="last_name"
-                  id="last_name" placeholder="last name" title="enter your last
-                  name if any.">
+                <label for="email">Correo Electronico</label>
+                <input type="email" class="form-control" name="email"
+                  id="email"
+                  placeholder="ejemplo@email.com"  [(ngModel)]="consultant.email">
               </div>
             </div>
 
             <div class="form-group">
 
               <div class="col-xs-6">
-                <label for="phone"><h4>Phone</h4></label>
-                <input type="text" class="form-control" name="phone" id="phone"
-                  placeholder="enter phone" title="enter your phone number if
-                  any.">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="col-xs-6">
-                <label for="mobile"><h4>Mobile</h4></label>
-                <input type="text" class="form-control" name="mobile"
-                  id="mobile" placeholder="enter mobile number" title="enter
-                  your mobile number if any.">
-              </div>
-            </div>
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="email"><h4>Email</h4></label>
-                <input type="email" class="form-control" name="email" id="email"
-                  placeholder="you@email.com" title="enter your email.">
-              </div>
-            </div>
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="email"><h4>Location</h4></label>
-                <input type="email" class="form-control" id="location"
-                  placeholder="somewhere" title="enter a location">
-              </div>
-            </div>
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="password"><h4>Password</h4></label>
+                <label for="password">Contraseña</label>
                 <input type="password" class="form-control" name="password"
                   id="password" placeholder="password" title="enter your
-                  password.">
+                  password." [(ngModel)]="consultant.password">
               </div>
             </div>
             <div class="form-group">
 
               <div class="col-xs-6">
-                <label for="password2"><h4>Verify</h4></label>
+                <label for="password2">Verificar Contraseña</label>
                 <input type="password" class="form-control" name="password2"
-                  id="password2" placeholder="password2" title="enter your
-                  password2.">
+                  id="password2" placeholder="Verificar contraseña para continuar" [(ngModel)]="rePass" >
               </div>
             </div>
             <div class="form-group">
               <div class="col-xs-12">
                 <br>
-                <button class="btn btn-lg btn-success" type="submit">Guardar</button>
-
+                <button class="btn btn-lg btn-success w-100" [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?' btn btn-success btn-block  ':' btn btn-success btn-block disabled'" (click)="updateProfile()">Guardar</button>
               </div>
             </div>
           </form>

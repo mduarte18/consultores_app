@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { GlobalService } from './../../services/global.service';
 import { Consultant } from './../../interfaces/Consultant';
 import { Component, OnInit } from '@angular/core';

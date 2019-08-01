@@ -9,6 +9,7 @@ export interface Dating {
   title: string;
   summary: string;
   price?:number;
+  dating_status?:string;
   created_at?: string;
   updated_at?: string;
 

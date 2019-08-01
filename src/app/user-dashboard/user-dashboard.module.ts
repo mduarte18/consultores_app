@@ -15,10 +15,11 @@ import { TansactionsComponent } from './tansactions/tansactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ConsultantsComponent } from './consultants/consultants.component';
+import { RequestsComponent } from './requests/requests.component';
 
 
 @NgModule({
-  declarations: [UDashboardComponent, UtopbarComponent, UsidebarComponent, ProfileComponent, NewAppointmentComponent, HistoryComponent, PaymentAppointmentComponent, BalanceComponent, TansactionsComponent, DashboardComponent, ConsultantsComponent],
+  declarations: [UDashboardComponent, UtopbarComponent, UsidebarComponent, ProfileComponent, NewAppointmentComponent, HistoryComponent, PaymentAppointmentComponent, BalanceComponent, TansactionsComponent, DashboardComponent, ConsultantsComponent, RequestsComponent],
   imports: [
     CommonModule,
     UserDashboardRoutingModule,

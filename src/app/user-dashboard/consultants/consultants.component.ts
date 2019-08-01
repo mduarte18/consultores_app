@@ -16,25 +16,25 @@ export class ConsultantsComponent implements OnInit {
 
   user: User = JSON.parse(localStorage.getItem('user_data'));
   consultants: Consultant[];
-  type: string='ALL';
+  type: string = 'ALL';
   dating = {} as Dating;
 
-  constructor(private globalService:GlobalService, private loader: Ng4LoadingSpinnerService,
-    private toaster: ToastrService,private modal:NgbModal) {
-      console.log('Asesores.');
+  constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
+    private toaster: ToastrService, private modal: NgbModal) {
+    console.log('Asesores.');
 
 
-    }
+  }
 
   ngOnInit() {
     this.loader.show();
-    this.globalService.getAllConsultants({type:this.type}).subscribe(
-      result =>{
+    this.globalService.getAllConsultants({ type: this.type }).subscribe(
+      result => {
         console.log(result);
-        this.consultants=result;
+        this.consultants = result;
         this.loader.hide()
       },
-      error=>{
+      error => {
         this.toaster.error(error.message, 'Error:')
 
         console.log(error);
@@ -43,15 +43,15 @@ export class ConsultantsComponent implements OnInit {
     );
   }
 
-  getConsultantByType(type:string){
+  getConsultantByType(type: string) {
     this.loader.show();
-    this.globalService.getAllConsultants({type:type}).subscribe(
-      result =>{
+    this.globalService.getAllConsultants({ type: type }).subscribe(
+      result => {
         console.log(result);
-        this.consultants=result;
+        this.consultants = result;
         this.loader.hide();
       },
-      error=>{
+      error => {
         this.toaster.error(error.message, 'Error:')
         console.log(error);
         this.loader.hide();
@@ -59,12 +59,12 @@ export class ConsultantsComponent implements OnInit {
     )
   }
 
-  open(content,event) {
+  open(content, event) {
 
-    this.dating.consultant_id=event.srcElement.dataset.consultantid;
-    this.dating.user_id=this.user.id;
+    this.dating.consultant_id = event.srcElement.dataset.consultantid;
+    this.dating.user_id = this.user.id;
 
-    this.modal.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       console.log(result);
     }, (reason) => {
       console.log(reason);
@@ -73,26 +73,64 @@ export class ConsultantsComponent implements OnInit {
 
   }
 
-  sendRequest(){
+  sendRequest() {
     console.log(this.dating);
-    this.loader.show()
-    this.globalService.new_dating(this.dating).subscribe(
-      result => {
-        if('ok'===result){
-          this.loader.hide();
-          this.toaster.success('Solicitud Enviada.');
-        }
-        console.log(result)
-      },
-      error => {
-        this.loader.hide();
-        this.toaster.error(error.message, 'Error: ');
-        console.log(error);
-      }
-    );
+    this.dating.dating_status = 'Solicitado';
+    if (this.validate()) {
+      this.loader.show()
+      this.globalService.new_dating(this.dating).subscribe(
+        result => {
+          if ('ok' === result) {
+            this.loader.hide();
+            this.dating = {} as Dating;
+            this.modal.dismissAll();
+            this.toaster.success('Solicitud Enviada.');
 
-    this.dating = {} as Dating;
-    this.modal.dismissAll();
+          }
+          console.log(result)
+        },
+        error => {
+          this.loader.hide();
+          this.toaster.error(error.message, 'Error: ');
+          console.log(error);
+        }
+      );
+    }
+  }
+
+  validate(): boolean {
+    let pass = true;
+
+    if (!this.dating.title) {
+      this.toaster.error('El campo de Titulo es Requerido', 'Error:');
+      pass = false;
+    }
+    if (!this.dating.summary) {
+      this.toaster.error('El campo de Descripción es Requerido', 'Error:');
+      pass = false;
+    }
+    if (!this.dating.price) {
+      this.toaster.error('El campo de Presupuesto es Requerido', 'Error:');
+      pass = false;
+    }
+    if (!this.dating.for_date) {
+      this.toaster.error('El campo de Fecha es Requerido', 'Error:');
+      pass = false;
+    }
+    if (!this.dating.time_from) {
+      this.toaster.error('El campo de Hora inicial es Requerido', 'Error:');
+      pass = false;
+    }
+    if (!this.dating.time_up) {
+      this.toaster.error('El campo de Hora de cierre es Requerido', 'Error:');
+      pass = false;
+    }
+    if (!this.dating.title) {
+      this.toaster.error('El campo de Titulo es Requerido', 'Error:');
+      pass = false;
+    }
+
+    return pass;
   }
 
 }

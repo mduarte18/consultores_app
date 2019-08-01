@@ -77,4 +77,8 @@ export class GlobalService {
   getDatingsForConsultant(consultant_id): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/dating/datings_by_consultant', {consultant_id:consultant_id});
   }
+
+  responseRequest(dating:Dating): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/response_request', dating);
+  }
 }

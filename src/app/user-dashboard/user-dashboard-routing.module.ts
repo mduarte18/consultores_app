@@ -9,6 +9,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PaymentAppointmentComponent } from './payment-appointment/payment-appointment.component';
 import { ConsultantsComponent } from './consultants/consultants.component';
+import { RequestsComponent } from './requests/requests.component';
 
 const routes: Routes = [{
   path: '',
@@ -45,6 +46,10 @@ const routes: Routes = [{
     {
       path: 'consultants',
       component: ConsultantsComponent
+    },
+    {
+      path: 'requests',
+      component: RequestsComponent
     },
 
   ]

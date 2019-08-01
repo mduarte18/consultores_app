@@ -54,7 +54,8 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   sendRequest(){
-    this.loader.show()
+    this.loader.show();
+    this.dating.dating_status='Solicitado';
     this.globalService.new_dating(this.dating).subscribe(
       result => {
         if('ok'===result){

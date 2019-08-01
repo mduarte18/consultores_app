@@ -1,14 +1,13 @@
 <div class="text-center p-5 m-5 animated fadeInDown">
     <form class="form-signin">
-      <h1 class="navbar-brand text-primary animated infinite pulse delay-2s" ><i class="fas fa-heartbeat fa-6x"></i></h1>
-      <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión</h1>
-      <label for="inputEmail" class="sr-only">Correo Electronico</label>
-      <input type="email" id="inputEmail" name="inputEmail" class="form-control" [(ngModel)]="user.email" placeholder="Correo Electrónico" required="true" autofocus="true">
-      <label for="inputPassword" class="sr-only">Contraseña</label>
-      <input type="password" id="inputPassword" name="inputPassword" class="form-control" [(ngModel)]="user.pass"
-        placeholder="Constraseña" required="true" >
-      <button class="btn btn-lg btn-primary btn-block" (click)="signIn(user)">Ingresar</button>
-      <span class="text-center mx-2">¿Eres nuevo?, Registrese <a [routerLink]="['/register/consultant']">aquí</a></span>
-      <p class="mt-5 mb-3 text-muted">© 2019</p>
+        <h1 class="navbar-brand text-primary animated infinite pulse delay-2s"><i class="fas fa-heartbeat fa-6x"></i></h1>
+        <h1 class="h3 mb-3 font-weight-normal">Inicio de Sesión</h1>
+        <label for="inputEmail" class="sr-only">Correo Electronico</label>
+        <input type="email" id="inputEmail" name="inputEmail" class="form-control" [(ngModel)]="user.email" placeholder="Correo Electrónico" required="true" autofocus="true">
+        <label for="inputPassword" class="sr-only">Contraseña</label>
+        <input type="password" id="inputPassword" name="inputPassword" class="form-control" [(ngModel)]="user.pass" placeholder="Constraseña" required="true">
+        <button class="btn btn-lg btn-primary btn-block" (click)="signIn()">Ingresar</button>
+        <span class="text-center mx-2">¿Eres nuevo?, Registrese <a [routerLink]="['/register/consultant']">aquí</a></span>
+        <p class="mt-5 mb-3 text-muted">© 2019</p>
     </form>
-  </div>
+</div>

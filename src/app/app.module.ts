@@ -11,7 +11,8 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner'
+import { TimeFormat } from './global/convertFrom24To12Format';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    Ng4LoadingSpinnerModule.forRoot()
+    Ng4LoadingSpinnerModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

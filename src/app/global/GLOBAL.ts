@@ -1,5 +1,7 @@
 export class GLOBAL {
   static apiUrl = 'http://localhost:8000/api';
+  // static apiUrl = 'https://murmuring-river-89792.herokuapp.com/api';
+
 
   static redirectTo(url) {
     const landingUrl = 'http://' + window.location.host + url;

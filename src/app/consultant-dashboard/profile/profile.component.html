@@ -1,138 +1,189 @@
 <div id="content-wrapper">
 
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="#">Tu perfil</a>
-      </li>
-    </ol>
-<div class="container bootstrap snippet">
-  <div class="row">
-    <div class="col text-center"><h1>User name</h1></div>
-  </div>
-  <div class="row">
-    <div class="col-sm-3"><!--left col-->
-      <div class="text-center">
-        <h1 class="text-center text-info"><i class="fas fa-user-tie fa-4x"></i></h1>
-      </div><br>
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Tu perfil</a>
+    </li>
+  </ol>
+  <div class="container bootstrap snippet">
+    <div class="row">
+      <div class="col text-center"><h1>{{consultant.name}}
+          {{consultant.lastname}}</h1></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3"><!--left col-->
+        <div class="text-center">
+          <h1 class="text-center text-info"><i class="fas fa-user-tie fa-4x"></i></h1>
+        </div><br>
 
-      <ul class="list-group">
-        <li class="list-group-item text-muted">Activity <i class="fa
-            fa-dashboard fa-1x"></i></li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span>
-          125</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span>
-          13</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
-          37</li>
-        <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span>
-          78</li>
-      </ul>
-    </div><!--/col-3-->
-    <div class="col-sm-9">
-      <!-- <ul class="nav nav-tabs">
+        <ul class="list-group">
+          <li class="list-group-item text-muted">Activity <i class="fa
+              fa-dashboard fa-1x"></i></li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span>
+            125</li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span>
+            13</li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span>
+            37</li>
+          <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span>
+            78</li>
+        </ul>
+      </div><!--/col-3-->
+      <div class="col-sm-9">
+        <!-- <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
         <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
         <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
       </ul> -->
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <hr>
+            <form class="form" action="#" method="post" id="registrationForm">
+              <div class="form-group">
 
-
-      <div class="tab-content">
-        <div class="tab-pane active" id="home">
-          <hr>
-          <form class="form" action="#" method="post" id="registrationForm">
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="phone">Documento de Identificacion</label>
-                <input type="text" class="form-control" name="identification_document"
-                  id="identification_document" placeholder="Documento de Identificacion"
-                  [(ngModel)]="consultant.identification_document" >
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label for="first_name">Nombres</label>
-                  <input type="text" class="form-control" name="name"
-                    id="name" placeholder="Nombres"
-                    [(ngModel)]="consultant.name">
+                <div class="col-xs-6">
+                  <label for="phone">Documento de Identificacion</label>
+                  <input type="text" class="form-control"
+                    name="identification_document"
+                    id="identification_document" placeholder="Documento de
+                    Identificacion"
+                    [(ngModel)]="consultant.identification_document">
                 </div>
               </div>
-              <div class="col">
-                <div class="form-group">
-                  <label for="last_name">Apellidos</label>
-                  <input type="text" class="form-control" name="lastname"
-                    id="lastname" placeholder="Apellidos" [(ngModel)]="consultant.lastname">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="first_name">Nombres</label>
+                    <input type="text" class="form-control" name="name"
+                      id="name" placeholder="Nombres"
+                      [(ngModel)]="consultant.name">
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <div class="col-xs-6">
-                    <label for="mobile">Telefono</label>
-                    <input type="text" class="form-control"
-                      name="phone_number" id="phone_number" placeholder="enter mobile number" [(ngModel)]="consultant.phone_number">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="last_name">Apellidos</label>
+                    <input type="text" class="form-control" name="lastname"
+                      id="lastname" placeholder="Apellidos"
+                      [(ngModel)]="consultant.lastname">
                   </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="form-group">
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="mobile">Telefono</label>
+                      <input type="text" class="form-control"
+                        name="phone_number" id="phone_number" placeholder="enter
+                        mobile number" [(ngModel)]="consultant.phone_number">
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
 
-                  <div class="col-xs-6">
-                    <label for="birthdate">Fecha de Nacimiento</label>
-                    <input type="date" class="form-control" id="birthdate"
-                      name="birthdate"
-                      placeholder="Fecha de nacimiento" [(ngModel)]="consultant.birthdate">
+                    <div class="col-xs-6">
+                      <label for="birthdate">Fecha de Nacimiento</label>
+                      <input type="date" class="form-control" id="birthdate"
+                        name="birthdate"
+                        placeholder="Fecha de nacimiento"
+                        [(ngModel)]="consultant.birthdate">
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
 
-            <div class="form-group">
+              <div class="form-group">
 
-              <div class="col-xs-6">
-                <label for="email">Correo Electronico</label>
-                <input type="email" class="form-control" name="email"
-                  id="email"
-                  placeholder="ejemplo@email.com"  [(ngModel)]="consultant.email">
+                <div class="col-xs-6">
+                  <label for="email">Correo Electronico</label>
+                  <input type="email" class="form-control" name="email"
+                    id="email"
+                    placeholder="ejemplo@email.com"
+                    [(ngModel)]="consultant.email">
+                </div>
               </div>
-            </div>
 
-            <div class="form-group">
-
-              <div class="col-xs-6">
-                <label for="password">Contraseña</label>
-                <input type="password" class="form-control" name="password"
-                  id="password" placeholder="password" title="enter your
-                  password." [(ngModel)]="consultant.password">
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password">Contraseña</label>
+                      <input type="password" class="form-control"
+                        name="password"
+                        id="password" placeholder="password" title="enter your
+                        password." [(ngModel)]="consultant.password">
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password2">Verificar Contraseña</label>
+                      <input type="password" class="form-control"
+                        name="password2"
+                        id="password2" placeholder="Verificar contraseña para
+                        continuar" [(ngModel)]="rePass">
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
 
-              <div class="col-xs-6">
-                <label for="password2">Verificar Contraseña</label>
-                <input type="password" class="form-control" name="password2"
-                  id="password2" placeholder="Verificar contraseña para continuar" [(ngModel)]="rePass" >
+              <div class="form-row">
+                <div class="col">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password">Horario de Atencion</label>
+                      <input type="time" class="form-control"
+                        name="office_hours_from"
+                        id="office_hours_from" placeholder="Desde" title="enter your
+                        password." [(ngModel)]="consultant.office_hours_from">
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password2">&nbsp;</label>
+                      <input type="time" class="form-control"
+                        name="office_hours_to"
+                        id="office_hours_to" placeholder="Hasta" [(ngModel)]="consultant.office_hours_to">
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="col-xs-6">
+                      <label for="password2">Presupuesto por Hora.</label>
+                      <input type="number" class="form-control"
+                        name="price_per_hour"
+                        id="price_per_hour" placeholder="Presupuesto por Hora"
+                        [(ngModel)]="consultant.price_per_hour">
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="form-group">
-              <div class="col-xs-12">
-                <br>
-                <button class="btn btn-lg btn-success w-100" [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?' btn btn-success btn-block  ':' btn btn-success btn-block disabled'" (click)="updateProfile()">Guardar</button>
-              </div>
-            </div>
-          </form>
 
-          <hr>
+              <hr>
+              <div class="form-group">
+                <div class="col-xs-12">
+                  <br>
+                  <button class="btn btn-lg btn-success w-100"
+                    [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?'
+                    btn btn-success btn-block ':' btn btn-success btn-block
+                    disabled'" (click)="updateProfile()">Guardar</button>
+                </div>
+              </div>
+            </form>
+
+
+          </div><!--/tab-pane-->
 
         </div><!--/tab-pane-->
+      </div><!--/tab-content-->
 
-      </div><!--/tab-pane-->
-    </div><!--/tab-content-->
-
-  </div><!--/col-9-->
-</div><!--/row-->
+    </div><!--/col-9-->
+  </div><!--/row-->
 </div>

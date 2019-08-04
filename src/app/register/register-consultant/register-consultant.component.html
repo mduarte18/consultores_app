@@ -54,8 +54,40 @@
         <input class="form-control" type="password"  id="re-pass" name="re-pass" [className]="(consultant.password!==rePass)&&(rePass)?' form-control border-danger':' form-control'" [(ngModel)]="rePass">
         <small [className]="(consultant.password!==rePass)&&(rePass)?' text-danger':' d-none'">Su contraseña no coincide.</small>
     </div> <!-- form-group end.// -->
+    <div class="form-row">
+      <div class="col">
+        <div class="form-group">
+          <div class="col-xs-6">
+            <label for="password">Horario de Atencion</label>
+            <input type="time" class="form-control"
+              name="office_hours_from"
+              id="office_hours_from" placeholder="Desde" title="enter your
+              password." [(ngModel)]="consultant.office_hours_from">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <div class="col-xs-6">
+            <label for="password2">&nbsp;</label>
+            <input type="time" class="form-control"
+              name="office_hours_to"
+              id="office_hours_to" placeholder="Hasta" [(ngModel)]="consultant.office_hours_to">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-xs-6">
+        <label for="password2">Presupuesto por Hora.</label>
+        <input type="number" class="form-control"
+          name="price_per_hour"
+          id="price_per_hour" placeholder="Presupuesto por Hora"
+          [(ngModel)]="consultant.price_per_hour">
+      </div>
+    </div>
       <div class="form-group">
-          <button type="submit"  [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?' btn btn-primary btn-block  ':' btn btn-primary btn-block disabled'"  id="send-data" (click)="register_consultant()"> Register  </button>
+          <button type="submit"  [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?' btn btn-primary btn-block  ':' btn btn-primary btn-block disabled'"  id="send-data" (click)="register_consultant()"> Registrar  </button>
       </div> <!-- form-group// -->
       <small class="text-muted">Al hacer click en registrar esta deacuerdo con nuestras politicas de uso y privacidad.</small>
   </form>

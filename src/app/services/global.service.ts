@@ -14,7 +14,7 @@ export class GlobalService {
   apiUrl = GLOBAL.apiUrl;
 
   constructor(private httpClient: HttpClient) {
-    console.log('Servicio Global.');
+    console.log(this.apiUrl);
   }
 
   singInChecked(type, mail, pass): Observable<any> {

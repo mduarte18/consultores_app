@@ -8,6 +8,14 @@
   </ol>
 
   <div class="row d-flex flex-row justify-content-center">
+    <div class="col-8">
+      <div class="form-group">
+        <label for="" class="text-center">Horario Requerido</label>
+        <input class="form-control" type="time" name="time_dating" id="time_dating" [(ngModel)]="time">
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex flex-row justify-content-center">
     <div class="col-5 d-flex justify-content-center align-items-center">
       <button class="btn btn-success w-75" (click)="getConsultantByType('AP')">Asesores
         de Psicologia</button>
@@ -25,12 +33,12 @@
         <div class="card-body text-center">
           <i class="fas fa-user-tie fa-2x text-info"></i>
           <h5 class="card-title">{{consultant.name}} {{consultant.lastname}}</h5>
-          <button class="btn btn-link text-center text-primary" href="#">Ver
+          <button class="btn btn-link text-center text-primary" (click)="show_consultant(consultant,consultant_info)" >Ver
             Información</button>
           <hr class="hr-light">
           <button class="btn btn-secondary" data-toggle="modal"
             [attr.data-consultantid]="consultant.id"
-            (click)="open(content,$event)">Solcitar Cita.</button>
+            (click)="open(content,consultant)">Solcitar Cita.</button>
         </div>
       </div>
     </div>
@@ -86,5 +94,28 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-success"
       (click)="sendRequest()">Enviar solicitud</button>
+  </div>
+</ng-template>
+
+<ng-template #consultant_info let-modal class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{consultant.name}} {{consultant.lastname}}</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+    <span><b>Correo electronico: </b> {{consultant.email}}</span><br>
+    <span><b>Horario de Atencion: </b> {{consultant.office_hours_from | convertFrom24To12Format}} - {{consultant.office_hours_to | convertFrom24To12Format}}</span><br>
+    <span><b>Presupuesto por hora: </b> {{consultant.price_per_hour}} $</span><br>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger"
+      (click)="close(consultant_info)">Cerrar</button>
   </div>
 </ng-template>

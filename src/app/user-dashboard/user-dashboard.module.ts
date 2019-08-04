@@ -1,4 +1,5 @@
-import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
+import { TimeFormat } from './../global/convertFrom24To12Format';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -13,19 +14,27 @@ import { PaymentAppointmentComponent } from './payment-appointment/payment-appoi
 import { BalanceComponent } from './balance/balance.component';
 import { TansactionsComponent } from './tansactions/tansactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConsultantsComponent } from './consultants/consultants.component';
 import { RequestsComponent } from './requests/requests.component';
+import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 
 @NgModule({
-  declarations: [UDashboardComponent, UtopbarComponent, UsidebarComponent, ProfileComponent, NewAppointmentComponent, HistoryComponent, PaymentAppointmentComponent, BalanceComponent, TansactionsComponent, DashboardComponent, ConsultantsComponent, RequestsComponent],
+  declarations: [UDashboardComponent,
+    UtopbarComponent, UsidebarComponent, ProfileComponent,
+    NewAppointmentComponent, HistoryComponent,
+    PaymentAppointmentComponent, BalanceComponent,
+    TansactionsComponent, DashboardComponent,
+    ConsultantsComponent, RequestsComponent
+  ],
   imports: [
     CommonModule,
     UserDashboardRoutingModule,
     NgbModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModuleModule
   ]
 })
 export class UserDashboardModule { }

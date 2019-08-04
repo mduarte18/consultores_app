@@ -1,3 +1,4 @@
+import { TimeFormat } from './../../global/convertFrom24To12Format';
 import { Dating } from './../../interfaces/Dating';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Consultant } from './../../interfaces/Consultant';
@@ -15,6 +16,9 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 export class ConsultantsComponent implements OnInit {
 
   user: User = JSON.parse(localStorage.getItem('user_data'));
+  consultant = {} as Consultant;
+  time: string='';
+
   consultants: Consultant[];
   type: string = 'ALL';
   dating = {} as Dating;
@@ -45,7 +49,7 @@ export class ConsultantsComponent implements OnInit {
 
   getConsultantByType(type: string) {
     this.loader.show();
-    this.globalService.getAllConsultants({ type: type }).subscribe(
+    this.globalService.getAllConsultants({ type: type, time:this.time }).subscribe(
       result => {
         console.log(result);
         this.consultants = result;
@@ -59,9 +63,10 @@ export class ConsultantsComponent implements OnInit {
     )
   }
 
-  open(content, event) {
+  open(content: any, consultant:any) {
 
-    this.dating.consultant_id = event.srcElement.dataset.consultantid;
+    console.log(consultant);
+    this.dating.consultant_id = consultant.id;
     this.dating.user_id = this.user.id;
 
     this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -133,4 +138,17 @@ export class ConsultantsComponent implements OnInit {
     return pass;
   }
 
+  show_consultant(consultant:any, modal:any){
+    this.consultant=consultant;
+
+    console.log(this.consultant);
+
+    this.modal.open(modal);
+  }
+
+  close(modal:any){
+    this.modal.dismissAll()
+  }
+
 }
+

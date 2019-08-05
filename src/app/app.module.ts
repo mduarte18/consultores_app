@@ -12,7 +12,8 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner'
-import { TimeFormat } from './global/convertFrom24To12Format';
+import { DataTablesModule } from 'angular-datatables';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { TimeFormat } from './global/convertFrom24To12Format';
       progressAnimation: 'decreasing',
     }),
     Ng4LoadingSpinnerModule.forRoot(),
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,4 @@
-import { TimeFormat } from './../global/convertFrom24To12Format';
+import { DataTablesModule } from 'angular-datatables';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +20,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { SharedModuleModule } from '../shared-module/shared-module.module';
 
 
+
 @NgModule({
   declarations: [UDashboardComponent,
     UtopbarComponent, UsidebarComponent, ProfileComponent,
@@ -34,7 +35,8 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModuleModule
+    SharedModuleModule,
+    DataTablesModule
   ]
 })
 export class UserDashboardModule { }

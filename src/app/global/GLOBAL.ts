@@ -1,5 +1,7 @@
 export class GLOBAL {
-  static apiUrl = 'http://localhost:8000/api';
+  // static apiUrl = 'http://localhost:8000/api';
+  static apiUrl = window.location.host.includes('localhost')?'http://localhost:8000/api':'https://murmuring-river-89792.herokuapp.com/api';
+
   // static apiUrl = 'https://murmuring-river-89792.herokuapp.com/api';
 
 

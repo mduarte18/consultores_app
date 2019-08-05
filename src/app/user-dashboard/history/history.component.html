@@ -7,8 +7,13 @@
     </li>
   </ol>
 
-  <div class="d-flex">
-      <table class="table table-hover">
+  <!-- <div class="d-flex  w-100">
+
+  <table datatable [dtOptions]="dtOptions" class="row-border hover">
+  </table>
+  </div> -->
+  <div class="d-flex  w-100">
+      <table datatable [dtOptions]="dtOptions" class="row-border hover">
           <thead>
             <tr>
               <th scope="col">Movimiento</th>
@@ -16,15 +21,18 @@
               <th scope="col">Fecha</th>
             </tr>
           </thead>
-          <tbody>
-              <ng-container *ngFor="let history of histories$ ">
-            <tr>
-              <td>{{history.movement_type}}</td>
-              <td>{{history.description}}</td>
-              <td>{{history.created_at}}</td>
+          <tbody *ngIf="histories$?.length != 0">
+            <tr *ngFor="let history of histories$">
+                <<td>{{history.movement_type}}</td>
+                <td>{{history.description}}</td>
+                <td>{{history.created_at}}</td>
             </tr>
-            </ng-container>
-          </tbody>
+        </tbody>
+        <tbody *ngIf="histories$?.length == 0">
+          <tr>
+            <td colspan="3" class="no-data-available">No data!</td>
+          </tr>
+         </tbody>
         </table>
   </div>
 

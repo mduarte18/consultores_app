@@ -1,3 +1,30 @@
-<p>
-  requests works!
-</p>
+<div id="content-wrapper">
+
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Asesorias Solicitadas</a>
+    </li>
+  </ol>
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4 m-1 " *ngFor="let dating of datings$">
+      <div class="card">
+        <div class="card-body text-center">
+          <i class="fas fa-clock fa-2x text-success"></i>
+          <h5 class="card-title">{{dating.title}}</h5>
+          <h6 class="card-title">{{dating.summary}}</h6>
+          <hr class="hr-light">
+          <div class="d-flex flex-row">
+            <button class="btn btn-primary text-center m-1">Ver
+              Información</button>
+            <button class="btn btn-danger m-1" data-toggle="modal">Cancelar
+              Solicitud</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

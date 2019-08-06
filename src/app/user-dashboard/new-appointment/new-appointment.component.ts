@@ -18,6 +18,9 @@ export class NewAppointmentComponent implements OnInit {
   type: string='ALL';
   user: User = JSON.parse(localStorage.getItem('user_data'));
   dating = {} as Dating;
+  consultant = {} as Consultant;
+
+
 
   constructor(private globalService:GlobalService, private loader: Ng4LoadingSpinnerService,
     private toaster: ToastrService,private modal:NgbModal) { }
@@ -71,6 +74,23 @@ export class NewAppointmentComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  setPriceForDating() {
+
+    if(this.dating.for_date && this.dating.time_from && this.dating.time_up){
+      var date1 = new Date(this.dating.for_date+' '+this.dating.time_from).getTime();
+      var date2 = new Date(this.dating.for_date+' '+this.dating.time_up).getTime();
+      var msec = date2 - date1;
+      this.dating.price=(msec/60000/60)*parseInt(this.consultant.price_per_hour);
+    }else{
+       return;
+    }
+   
+  }
+
+  setConsultant(consul){
+    console.log(consul);
   }
 
 }

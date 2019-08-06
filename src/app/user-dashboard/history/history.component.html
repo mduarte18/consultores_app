@@ -7,14 +7,10 @@
     </li>
   </ol>
 
-  <!-- <div class="d-flex  w-100">
 
-  <table datatable [dtOptions]="dtOptions" class="row-border hover">
-  </table>
-  </div> -->
   <div class="d-flex  w-100">
-      <table datatable [dtOptions]="dtOptions" class="row-border hover">
-          <thead>
+      <table class=" table table-hover">
+          <thead class="thead-dark">
             <tr>
               <th scope="col">Movimiento</th>
               <th scope="col">Descripcion</th>
@@ -23,7 +19,7 @@
           </thead>
           <tbody *ngIf="histories$?.length != 0">
             <tr *ngFor="let history of histories$">
-                <<td>{{history.movement_type}}</td>
+                <td>{{history.movement_type}}</td>
                 <td>{{history.description}}</td>
                 <td>{{history.created_at}}</td>
             </tr>

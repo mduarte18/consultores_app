@@ -78,6 +78,10 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/dating/datings_by_consultant', {consultant_id:consultant_id});
   }
 
+  getDatingsByUser(user_id): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/datings_by_user', {user_id:user_id});
+  }
+
   responseRequest(dating:Dating): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/dating/response_request', dating);
   }

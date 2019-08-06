@@ -13,42 +13,41 @@ import { Subject } from 'rxjs';
 export class HistoryComponent implements OnInit,OnDestroy {
 
   public user: User = JSON.parse(localStorage.getItem('user_data'));
-;
   histories$: any;
-  dtOptions: DataTables.Settings = {};
+  // dtOptions: DataTables.Settings = {};
 
 
 
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService) {
-    // this.getHistories();
+    this.getHistories();
   }
 
   ngOnInit() {
 
     // this.getHistories();
-    this.dtOptions = {
-      ajax: (dataTablesParameters: any=this.user, callback) => {
-        this.globalService.getUserHistories(this.user.id).subscribe(resp => {
-            this.histories$ = resp;
-            callback({
-              recordsTotal: resp.recordsTotal,
-              recordsFiltered: resp.recordsFiltered,
-              data: []
-            });
-          });
-      },
-      columns: [{
-        title: 'Movimiento',
-        data: 'movement_type'
-      }, {
-        title: 'Descripción',
-        data: 'description'
-      }, {
-        title: 'Fecha',
-        data: 'created_at'
-      }]
-    };
+    // this.dtOptions = {
+    //   ajax: (dataTablesParameters: any=this.user, callback) => {
+    //     this.globalService.getUserHistories(this.user.id).subscribe(resp => {
+    //         this.histories$ = resp;
+    //         callback({
+    //           recordsTotal: resp.recordsTotal,
+    //           recordsFiltered: resp.recordsFiltered,
+    //           data: []
+    //         });
+    //       });
+    //   },
+    //   columns: [{
+    //     title: 'Movimiento',
+    //     data: 'movement_type'
+    //   }, {
+    //     title: 'Descripción',
+    //     data: 'description'
+    //   }, {
+    //     title: 'Fecha',
+    //     data: 'created_at'
+    //   }]
+    // };
 
 
 

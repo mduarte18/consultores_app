@@ -50,9 +50,10 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Asesor</label>
-            <select class="form-control" id="consultant_id" name="consultant_id" [(ngModel)]="dating.consultant_id">
+            <select class="form-control" id="consultant_id" name="consultant_id" [(ngModel)]="dating.consultant_id" >
         <option  value="">Seleccione un asesor</option>
-        <option *ngFor="let consultant of consultants" [ngValue]="consultant.id">{{consultant.name}} {{consultant.lastname}}</option>
+  dating = {} as Dating;
+        <option *ngFor="let consultant of consultants" [ngValue]="consultant.id" >{{consultant.name}} {{consultant.lastname}}</option>
       </select>
         </div>
         <div class="form-group">

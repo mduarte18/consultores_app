@@ -12,7 +12,6 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner'
-import { DataTablesModule } from 'angular-datatables';
 
 
 @NgModule({
@@ -36,8 +35,7 @@ import { DataTablesModule } from 'angular-datatables';
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    Ng4LoadingSpinnerModule.forRoot(),
-    DataTablesModule
+    Ng4LoadingSpinnerModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,11 +17,13 @@ export class ConsultantsComponent implements OnInit {
 
   user: User = JSON.parse(localStorage.getItem('user_data'));
   consultant = {} as Consultant;
-  time: string='';
+  time: string = '';
 
   consultants: Consultant[];
   type: string = 'ALL';
   dating = {} as Dating;
+
+  formatTime: number = 0;
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
     private toaster: ToastrService, private modal: NgbModal) {
@@ -49,7 +51,7 @@ export class ConsultantsComponent implements OnInit {
 
   getConsultantByType(type: string) {
     this.loader.show();
-    this.globalService.getAllConsultants({ type: type, time:this.time }).subscribe(
+    this.globalService.getAllConsultants({ type: type, time: this.time }).subscribe(
       result => {
         console.log(result);
         this.consultants = result;
@@ -63,9 +65,9 @@ export class ConsultantsComponent implements OnInit {
     )
   }
 
-  open(content: any, consultant:any) {
+  open(content: any, consultant: any) {
 
-    console.log(consultant);
+    this.consultant=consultant;
     this.dating.consultant_id = consultant.id;
     this.dating.user_id = this.user.id;
 
@@ -88,9 +90,9 @@ export class ConsultantsComponent implements OnInit {
           if ('ok' === result) {
             this.loader.hide();
             this.dating = {} as Dating;
+            this.consultant = {} as Consultant;
             this.modal.dismissAll();
             this.toaster.success('Solicitud Enviada.');
-
           }
           console.log(result)
         },
@@ -138,17 +140,30 @@ export class ConsultantsComponent implements OnInit {
     return pass;
   }
 
-  show_consultant(consultant:any, modal:any){
-    this.consultant=consultant;
-
+  show_consultant(consultant: any, modal: any) {
+    this.consultant = consultant;
     console.log(this.consultant);
-
     this.modal.open(modal);
   }
 
-  close(modal:any){
+  close(modal: any) {
     this.modal.dismissAll()
   }
+
+  setPriceForDating() {
+
+    if(this.dating.for_date && this.dating.time_from && this.dating.time_up){
+      var date1 = new Date(this.dating.for_date+' '+this.dating.time_from).getTime();
+      var date2 = new Date(this.dating.for_date+' '+this.dating.time_up).getTime();
+      var msec = date2 - date1;
+      this.dating.price=(msec/60000/60)*parseInt(this.consultant.price_per_hour);
+    }else{
+       return;
+    }
+   
+
+  }
+
 
 }
 

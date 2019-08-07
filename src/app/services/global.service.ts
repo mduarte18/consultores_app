@@ -85,4 +85,8 @@ export class GlobalService {
   responseRequest(dating:Dating): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/dating/response_request', dating);
   }
+
+  cancelDating(dating_id): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/cancelled_dating', {dating_id:dating_id});
+  }
 }

@@ -17,25 +17,6 @@
             <label for="exampleInputPassword1">Descripcion</label>
             <textarea class="form-control" id="summary" name="summary" placeholder="Descripcion" [(ngModel)]="dating.summary"></textarea>
         </div>
-        <div class="form-group">
-            <label for="for_date">Fecha de la consulta</label>
-            <input type="date" class="form-control" id="for_date" name="for_date" [(ngModel)]="dating.for_date">
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="date">Hora Inical</label>
-                    <input id="time_from" class="form-control" name="time_from" type="time" [(ngModel)]="dating.time_from">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="time">Hora Cierre</label>
-                    <input id="time_up" class="form-control" name="time_up" type="time" [(ngModel)]="dating.time_up">
-                </div>
-            </div>
-        </div>
         <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="career" id="psicologia" value="AP" checked (click)="getConsultants('AP')">
             <label class="form-check-label" for="exampleRadios1">
@@ -50,14 +31,33 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Asesor</label>
-            <select class="form-control" id="consultant_id" name="consultant_id" [(ngModel)]="dating.consultant_id">
+            <select class="form-control" id="consultant_id" name="consultant_id" [(ngModel)]="dating.consultant_id" (change)="setConsultant($event)">
         <option  value="">Seleccione un asesor</option>
         <option *ngFor="let consultant of consultants" [ngValue]="consultant.id">{{consultant.name}} {{consultant.lastname}}</option>
       </select>
         </div>
         <div class="form-group">
+            <label for="for_date">Fecha de la consulta</label>
+            <input type="date" class="form-control" id="for_date" name="for_date" (change)="setPriceForDating()" [(ngModel)]="dating.for_date">
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="date">Hora Inical</label>
+                    <input id="time_from" class="form-control" name="time_from" type="time" (change)="setPriceForDating()" [(ngModel)]="dating.time_from">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="time">Hora Cierre</label>
+                    <input id="time_up" class="form-control" name="time_up" type="time" (change)="setPriceForDating()" [(ngModel)]="dating.time_up">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
             <label for="date">Presupuesto</label>
-            <input id="price" class="form-control" name="price" type="number" required="true" [(ngModel)]="dating.price">
+            <input id="price" class="form-control" name="price" type="number" readonly="true" [(ngModel)]="dating.price">
         </div>
         <button type="submit" class="btn btn-primary w-100" (click)="sendRequest()">Enviar solicitud</button>
     </form>

@@ -59,6 +59,7 @@ export class NewAppointmentComponent implements OnInit {
   sendRequest(){
     this.loader.show();
     this.dating.dating_status='Solicitado';
+    this.dating.user_id=this.user.id;
     this.globalService.new_dating(this.dating).subscribe(
       result => {
         if('ok'===result){
@@ -86,11 +87,11 @@ export class NewAppointmentComponent implements OnInit {
     }else{
        return;
     }
-   
+
   }
 
-  setConsultant(consul){
-    console.log(consul);
+  setConsultant(event){
+   this.consultant= this.consultants.find(consul => consul.id === this.dating.consultant_id);
   }
 
 }

@@ -29,14 +29,12 @@ export class ConsultantsComponent implements OnInit {
     private toaster: ToastrService, private modal: NgbModal) {
     console.log('Asesores.');
 
-
   }
 
   ngOnInit() {
     this.loader.show();
     this.globalService.getAllConsultants({ type: this.type }).subscribe(
       result => {
-        console.log(result);
         this.consultants = result;
         this.loader.hide()
       },
@@ -53,7 +51,6 @@ export class ConsultantsComponent implements OnInit {
     this.loader.show();
     this.globalService.getAllConsultants({ type: type, time: this.time }).subscribe(
       result => {
-        console.log(result);
         this.consultants = result;
         this.loader.hide();
       },
@@ -142,7 +139,6 @@ export class ConsultantsComponent implements OnInit {
 
   show_consultant(consultant: any, modal: any) {
     this.consultant = consultant;
-    console.log(this.consultant);
     this.modal.open(modal);
   }
 
@@ -160,7 +156,7 @@ export class ConsultantsComponent implements OnInit {
     }else{
        return;
     }
-   
+
 
   }
 

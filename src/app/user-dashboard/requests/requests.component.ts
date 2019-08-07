@@ -1,3 +1,4 @@
+import { Dating } from './../../interfaces/Dating';
 import { User } from './../../interfaces/User';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -14,6 +15,7 @@ export class RequestsComponent implements OnInit {
 
   public user: User = JSON.parse(localStorage.getItem('user_data'));
   datings$: any;
+  dating :any;
 
   constructor(private globalService:GlobalService, private loader: Ng4LoadingSpinnerService,
     private toaster: ToastrService, private modal: NgbModal) {
@@ -27,7 +29,6 @@ export class RequestsComponent implements OnInit {
     this.loader.show();
     this.globalService.getDatingsByUser(id).subscribe(
       result=>{
-        console.log(result);
         this.datings$=result;
         this.loader.hide();
       },
@@ -37,6 +38,39 @@ export class RequestsComponent implements OnInit {
         this.toaster.error(error.message,'Error:');
       }
     );
+  }
+
+  open(content: any, dating) {
+    this.dating=dating;
+    this.modal.open(content);
+
+  }
+
+  close(){
+    this.modal.dismissAll()
+  }
+
+  cancelledDating(){
+    this.loader.show();
+    this.modal.dismissAll();
+    this.globalService.cancelDating(this.dating.id).subscribe(
+      response=>{
+        if('ok'===response){
+          this.getDatings(this.user.id);
+          this.loader.hide();
+          this.toaster.success('Solicitud de asesoria cancelada.','Exitoso');
+        }else{
+          this.loader.hide();
+          this.toaster.error('No se ha podido cancelar.','Error:');
+        }
+      },
+      error=>{
+        this.loader.hide();
+        this.toaster.error('Ha ocurrido un error.','Error:');
+        console.error(error);
+      }
+    )
+
   }
 
 }

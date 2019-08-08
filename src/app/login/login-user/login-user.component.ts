@@ -27,7 +27,7 @@ export class LoginUserComponent implements OnInit {
     this.loader.show();
     this.globalService.singInChecked('user', this.user.email, this.user.pass).subscribe(
       result => {
-        if (0 === result) {
+        if (0 === result || null === result) {
           this.loader.hide();
           this.toaster.error('Correo y/o Contraseña invalidos.', 'Error: ');
         } else {

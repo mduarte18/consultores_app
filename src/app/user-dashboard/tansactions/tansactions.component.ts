@@ -33,7 +33,10 @@ export class TansactionsComponent implements OnInit {
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
       amount: new FormControl(),
-      deposit: new FormControl()
+      deposit: new FormControl(),
+      bank: new FormControl(),
+      referenceno: new FormControl(),
+      payment_method: new FormControl()
     });
   }
 
@@ -46,19 +49,23 @@ export class TansactionsComponent implements OnInit {
     console.log('enviado');
     // this.formData.append('file', this.uploadForm.get('deposit').value);
     this.formData.append('amount', this.uploadForm.get('amount').value);
+    this.formData.append('bank', this.uploadForm.get('bank').value);
+    this.formData.append('referenceno', this.uploadForm.get('referenceno').value);
+    this.formData.append('payment_method', this.uploadForm.get('payment_method').value);
     this.formData.append('user_id',this.user.id.toString());
 
     console.log(this.formData);
 
     this.globalService.uploadDeposit(this.formData).subscribe(
-      result => { console.log(result); 
-                  this.loader.hide(); 
+      result => { console.log(result);
+                  this.loader.hide();
                   this.toaster.success('Se ha enviado la solicitud correctamente'); },
-      error => { console.log(error); 
-                  this.loader.hide(); 
+      error => { console.log(error);
+                  this.loader.hide();
                   this.toaster.error(error.message, 'Error:'); }
     )
     this.uploadForm.get('amount').setValue(0);
+    this.uploadForm.get('referenceno').setValue('');
     this.modalService.dismissAll();
   }
 

@@ -66,6 +66,12 @@ export class NewAppointmentComponent implements OnInit {
           this.loader.hide();
           this.toaster.success('Solicitud Enviada.');
           this.dating = {} as Dating;
+        }else{
+          this.loader.hide();
+          // this.dating = {} as Dating;
+          // this.consultant = {} as Consultant;
+          // this.modal.dismissAll();
+          this.toaster.error(result,'Error:');
         }
         console.log(result)
       },

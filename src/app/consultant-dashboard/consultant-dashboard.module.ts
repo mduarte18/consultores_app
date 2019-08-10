@@ -13,9 +13,10 @@ import { RequestsComponent } from './requests/requests.component';
 import { BalanceComponent } from './balance/balance.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BankAccountComponent } from './bank-account/bank-account.component';
 
 @NgModule({
-  declarations: [CDashboardComponent, CsidebarComponent, CtopbarComponent, HistoryComponent, DashboardComponent, FooterComponent, RequestsComponent, BalanceComponent, ProfileComponent],
+  declarations: [CDashboardComponent, CsidebarComponent, CtopbarComponent, HistoryComponent, DashboardComponent, FooterComponent, RequestsComponent, BalanceComponent, ProfileComponent, BankAccountComponent],
   imports: [
     CommonModule,
     ConsultantDashboardRoutingModule,

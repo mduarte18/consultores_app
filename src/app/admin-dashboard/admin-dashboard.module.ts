@@ -1,3 +1,4 @@
+import { SharedModuleModule } from './../shared-module/shared-module.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -17,7 +18,8 @@ import { UsersComponent } from './users/users.component';
   declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent],
   imports: [
     CommonModule,
-    AdminDashboardRoutingModule
+    AdminDashboardRoutingModule,
+    SharedModuleModule
   ]
 })
 export class AdminDashboardModule { }

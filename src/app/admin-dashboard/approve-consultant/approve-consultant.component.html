@@ -9,5 +9,69 @@
     </li>
   </ol>
 
+  <div class="row d-flex justify-content-center">
+    <div *ngFor="let consultant of consultants" class="col-md-3 m-1">
+      <div class="card">
+        <div class="card-body text-center">
+          <i
+            [className]="(consultant.validate==='N'?'text-danger':'text-success')+'
+            fas fa-user-tie fa-2x'"></i>
+          <h5 class="card-title">{{consultant.name}} {{consultant.lastname}}</h5>
+          <button class="btn btn-link text-center text-primary" (click)="open(consultant_info, consultant)" >Ver
+            Información</button>
+          <hr class="hr-light">
+          <button [className]="'btn '+(consultant.validate==='N'?'btn-success':'
+            d-none')" data-toggle="modal" (click)="openAction(confirm_action,'Activar',consultant,'Y')">Activar</button>
+
+          <button [className]="'btn '+(consultant.validate==='Y'?'btn-danger':'
+            d-none')" data-toggle="modal" (click)="openAction(confirm_action,'Desactivar',consultant,'N')" >Desactivar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
+
+<ng-template #confirm_action let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Confirmar cancelación de
+      asesoria.</h5>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>¿Esta seguro de {{action}} al asesor <b>"{{Consultant.name}} {{Consultant.lastname}}"</b>?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+    <button type="button" class="btn btn-primary ml-2"
+      (click)="confirmAction()">Aceptar</button>
+  </div>
+</ng-template>
+
+<ng-template #consultant_info let-modal class="modal fade" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{Consultant.name}} {{Consultant.lastname}}</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+    <span><b>Correo electronico: </b> {{Consultant.email}}</span><br>
+    <span><b>Horario de Atencion: </b> {{Consultant.office_hours_from | convertFrom24To12Format}} - {{Consultant.office_hours_to | convertFrom24To12Format}}</span><br>
+    <span><b>Presupuesto por hora: </b> {{Consultant.price_per_hour}} $</span><br>
+
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger"
+      (click)="close(consultant_info)">Cerrar</button>
+  </div>
+</ng-template>

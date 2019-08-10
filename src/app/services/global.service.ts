@@ -68,6 +68,14 @@ export class GlobalService {
 
   getAllConsultants(params): Observable<any>{
     return this.httpClient.post(this.apiUrl + '/consultant/all_consultants', params);
+  }//all_activate_consultants
+
+  getAllActivateConsultants(params): Observable<any>{
+    return this.httpClient.post(this.apiUrl + '/consultant/all_activate_consultants', params);
+  }//
+
+  activateOrDesactivateConsultants(params): Observable<any>{
+    return this.httpClient.post(this.apiUrl + '/consultant/activate_or_desactivate_consultant', params);
   }
 
   new_dating(dating: Dating): Observable<any> {
@@ -88,5 +96,15 @@ export class GlobalService {
 
   cancelDating(dating_id): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/dating/cancelled_dating', {dating_id:dating_id});
+  }
+
+  getAllDeposits(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/deposit/get_all_deposits',params);
+  }
+  getAllPendingDeposits(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/deposit/get_all_pending_deposits',params);
+  }
+  updateStatusDeposit(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/deposit/update_deposit_status',params);
   }
 }

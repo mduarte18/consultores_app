@@ -9,5 +9,61 @@
     </li>
   </ol>
 
+  <div class="row justify-content-center align-content-center">
+    <div class="col-md-3" *ngFor="let deposit of deposits">
+      <div class="card" styfontle="width: 18rem;">
+        <a [href]="uploadUrl+deposit.document" target="_blank"
+          class="text-center text-secondary my-2 mt-3">
+          <!-- <img [src]="uploadUrl+deposit.document" width="100px" height="200px"
+            class="card-img-top" alt="..."> -->
+          <i class="fas fa-file-pdf fa-4x"></i><br>
+          <span>Click para ver el documento.</span>
+        </a>
+        <div class="card-body">
+          <h5 class="card-title text-center">{{deposit.nameus}}
+            {{deposit.lastus}}</h5>
+          <span class="card-text"><b>Banco:</b> {{deposit.bank_from}}</span><br>
+          <span class="card-text"><b>Fecha:</b> {{deposit.created_at |
+            date:'dd/MM/yyyy'}}</span>
+          <div class="d-flex flex-column justify-content-center my-2">
+            <button class="btn btn-primary" (click)="open(consultant_info,
+              deposit)">Ver detalle.</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 </div>
+
+<ng-template #consultant_info let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ref.: {{deposit.referenceno}}
+      - {{deposit.nameus}} {{deposit.lastus}}</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+      <span><b>Fecha: </b>{{deposit.created_at | date:'dd/MM/yyyy'}}</span><br>
+      <span><b>Banco: </b>{{deposit.bank_from}}</span><br>
+      <span><b>Método de Pago: </b>{{deposit.payment_method}}</span><br>
+      <span><b>Referencia: </b>{{deposit.referenceno}}</span><br>
+      <span><b>Monto: </b>{{deposit.amount}}</span><br>
+      <span><b>Comprobante: </b><a [href]="uploadUrl+deposit.document" target="_blank">Hacer click aquí.</a></span><br>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary"
+      (click)="close()">Cerrar</button>
+      <button type="button" class="btn btn-danger"
+      (click)="updateStatus(deposit,'R')">Rechazar</button>
+    <button type="button" class="btn btn-success"
+      (click)="updateStatus(deposit,'A')">Aprobar</button>
+  </div>
+</ng-template>

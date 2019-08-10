@@ -1,0 +1,87 @@
+<div id="content-wrapper">
+
+    <!-- <div class="container"> -->
+
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Cuentas Bancarias</a>
+        </li>
+      </ol>
+
+      <div class="row d-flex justify-content-center">
+          <div class="col-md-3 m-1">
+            <div class="card">
+              <div class="card-body text-center bg-success">
+               <button class="btn btn-success" (click)="open(content)" >
+                  <i class="fas fa-plus fa-9x "></i>
+               </button>
+              </div>
+            </div>
+          </div>
+        </div>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Añadir Saldo a Cuenta.</h4>
+      <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form >
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="amount">Banco:</label>
+          <select  id="bank" name="bank" class="form-control" required="required" [(ngModel)]="account.bank">
+            <option [ngValue]="'Banco Central de Venezuela'"> Banco Central de Venezuela</option>
+            <option [ngValue]="'Banco Industrial de Venezuela, C.A. Banco Universal'"> Banco Industrial de Venezuela, C.A. Banco Universal</option>
+            <option [ngValue]="'Banco de Venezuela S.A.C.A. Banco Universal'"> Banco de Venezuela S.A.C.A. Banco Universal</option>
+            <option [ngValue]="'Venezolano de Crédito, S.A. Banco Universal'"> Venezolano de Crédito, S.A. Banco Universal</option>
+            <option [ngValue]="'Banco Mercantil, C.A S.A.C.A. Banco Universal'"> Banco Mercantil, C.A S.A.C.A. Banco Universal</option>
+            <option [ngValue]="'Banco Provincial, S.A. Banco Universal'"> Banco Provincial, S.A. Banco Universal</option>
+            <option [ngValue]="'Bancaribe C.A. Banco Universal'"> Bancaribe C.A. Banco Universal</option>
+            <option [ngValue]="'Banco Exterior C.A. Banco Universal'"> Banco Exterior C.A. Banco Universal</option>
+            <option [ngValue]="'Banco Occidental de Descuento, Banco Universal C.A.'"> Banco Occidental de Descuento, Banco Universal C.A.</option>
+            <option [ngValue]="'Banco Caroní C.A. Banco Universal'"> Banco Caroní C.A. Banco Universal</option>
+            <option [ngValue]="'Banesco Banco Universal S.A.C.A.'"> Banesco Banco Universal S.A.C.A.</option>
+            <option [ngValue]="'Banco Sofitasa Banco Universal'"> Banco Sofitasa Banco Universal</option>
+            <option [ngValue]="'Banco Plaza Banco Universal'"> Banco Plaza Banco Universal</option>
+            <option [ngValue]="'Banco de la Gente Emprendedora C.A.'"> Banco de la Gente Emprendedora C.A.</option>
+            <option [ngValue]="'Banco del Pueblo Soberano, C.A. Banco de Desarrollo'"> Banco del Pueblo Soberano, C.A. Banco de Desarrollo</option>
+            <option [ngValue]="'BFC Banco Fondo Común C.A Banco Universal'"> BFC Banco Fondo Común C.A Banco Universal</option>
+            <option [ngValue]="'100% Banco, Banco Universal C.A.'"> 100% Banco, Banco Universal C.A.</option>
+            <option [ngValue]="'DelSur Banco Universal, C.A.'"> DelSur Banco Universal, C.A.</option>
+            <option [ngValue]="'Banco del Tesoro, C.A. Banco Universal'"> Banco del Tesoro, C.A. Banco Universal</option>
+            <option [ngValue]="'Banco Agrícola de Venezuela, C.A. Banco Universal'"> Banco Agrícola de Venezuela, C.A. Banco Universal</option>
+            <option [ngValue]="'Bancrecer, S.A. Banco Microfinanciero'"> Bancrecer, S.A. Banco Microfinanciero</option>
+            <option [ngValue]="'Mi Banco Banco Microfinanciero C.A.'"> Mi Banco Banco Microfinanciero C.A.</option>
+            <option [ngValue]="'Banco Activo, C.A. Banco Universal'"> Banco Activo, C.A. Banco Universal</option>
+            <option [ngValue]="'Bancamiga Banco Microfinanciero C.A.'"> Bancamiga Banco Microfinanciero C.A.</option>
+            <option [ngValue]="'Banco Internacional de Desarrollo, C.A. Banco Universal'"> Banco Internacional de Desarrollo, C.A. Banco Universal</option>
+            <option [ngValue]="'Banplus Banco Universal, C.A.'"> Banplus Banco Universal, C.A.</option>
+            <option [ngValue]="'Banco Bicentenario Banco Universal C.A.'"> Banco Bicentenario Banco Universal C.A.</option>
+            <option [ngValue]="'Banco Espirito Santo, S.A. Sucursal Venezuela B.U.'"> Banco Espirito Santo, S.A. Sucursal Venezuela B.U.</option>
+            <option [ngValue]="'Banco de la Fuerza Armada Nacional Bolivariana, B.U.'"> Banco de la Fuerza Armada Nacional Bolivariana, B.U.</option>
+            <option [ngValue]="'Citibank N.A.'"> Citibank N.A.</option>
+            <option [ngValue]="'Banco Nacional de Crédito, C.A. Banco Universal'"> Banco Nacional de Crédito, C.A. Banco Universal</option>
+            <option [ngValue]="'Instituto Municipal de Crédito Popular'"> Instituto Municipal de Crédito Popular</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="amount">Numero de Cuenta:</label>
+            <input class="form-control" type="text" name="account_number" id="account_number" [(ngModel)]="account.account_number"/>
+          </div>
+        <div class="form-group">
+          <label for="amount">¿En uso?</label>
+          <input class="form-control" type="checkbox" name="to_use" [(ngModel)]="account.to_use"
+            id="to_use"/>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="create_account()" >Enviar</button>
+      </div>
+    </form>
+  </ng-template>
+

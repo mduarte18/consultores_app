@@ -1,3 +1,4 @@
+import { BankAccountComponent } from './bank-account/bank-account.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BalanceComponent } from './balance/balance.component';
 import { RequestsComponent } from './requests/requests.component';
@@ -31,6 +32,10 @@ const routes: Routes = [
       {
         path: 'profile',
         component: ProfileComponent
+      },
+      {
+        path: 'banks',
+        component: BankAccountComponent
       }
     ]
   }

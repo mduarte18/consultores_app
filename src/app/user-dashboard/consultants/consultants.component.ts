@@ -33,7 +33,7 @@ export class ConsultantsComponent implements OnInit {
 
   ngOnInit() {
     this.loader.show();
-    this.globalService.getAllConsultants({ type: this.type }).subscribe(
+    this.globalService.getAllActivateConsultants({ type: this.type }).subscribe(
       result => {
         this.consultants = result;
         this.loader.hide()
@@ -49,7 +49,7 @@ export class ConsultantsComponent implements OnInit {
 
   getConsultantByType(type: string) {
     this.loader.show();
-    this.globalService.getAllConsultants({ type: type, time: this.time }).subscribe(
+    this.globalService.getAllActivateConsultants({ type: type, time: this.time }).subscribe(
       result => {
         this.consultants = result;
         this.loader.hide();
@@ -90,6 +90,12 @@ export class ConsultantsComponent implements OnInit {
             this.consultant = {} as Consultant;
             this.modal.dismissAll();
             this.toaster.success('Solicitud Enviada.');
+          }else{
+            this.loader.hide();
+            // this.dating = {} as Dating;
+            // this.consultant = {} as Consultant;
+            // this.modal.dismissAll();
+            this.toaster.error(result,'Error:');
           }
           console.log(result)
         },

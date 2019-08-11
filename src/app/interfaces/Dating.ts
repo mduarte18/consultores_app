@@ -12,5 +12,8 @@ export interface Dating {
   dating_status?:string;
   created_at?: string;
   updated_at?: string;
+  solape?:string;
+  solname?:string;
+
 
 }

@@ -10,11 +10,28 @@
       </ol>
 
       <div class="row d-flex justify-content-center">
+          <div *ngFor="let acct of accounts" class="col-md-3 m-1">
+              <div class="card">
+                <div class="card-body text-center">
+                  <i
+                    [className]="(acct.to_use==='1'?'text-success':'text-warning')+'
+                    fas fa-university fa-4x'"></i>
+                  <h5 class="card-title">{{acct.bank}}</h5>
+                  <button class="btn btn-link text-center text-primary" (click)="open(content,acct)" >Ver Detalles</button>
+                  <hr class="hr-light">
+                  <button [className]="'btn '+(acct.to_use!=='1'?'btn-success':'
+                    d-none')" data-toggle="modal" (click)="update_account(acct.id,'1')" >Activar</button>
+
+                  <button [className]="'btn '+(acct.to_use==='1'?'btn-warning':'
+                    d-none')" data-toggle="modal" (click)="update_account(acct.id,'0')" >Desactivar</button>
+                </div>
+              </div>
+            </div>
           <div class="col-md-3 m-1">
             <div class="card">
               <div class="card-body text-center bg-success">
-               <button class="btn btn-success" (click)="open(content)" >
-                  <i class="fas fa-plus fa-9x "></i>
+               <button class="btn btn-success" (click)="open(content,null)" >
+                  <i class="fas fa-plus fa-8x "></i>
                </button>
               </div>
             </div>
@@ -80,7 +97,9 @@
       </div>
 
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" (click)="create_account()" >Enviar</button>
+        <button type="submit" [className]="'btn btn-primary '+(isNew?'':'d-none')"  (click)="create_account()" >Enviar</button>
+        <button type="submit"  [className]="'btn btn-success '+(!isNew?'':'d-none')" (click)="update_account()" >Guardar</button>
+
       </div>
     </form>
   </ng-template>

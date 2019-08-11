@@ -13,8 +13,35 @@
       <h1 class="text-right">{{balanceUser}}</h1>
     </div>
     <div class="p-3 m-3 text-center w-50 d-flex flex-row align-content-center justify-content-center">
-        <a class="btn btn-primary mx-3" routerLink="history">Retirar Fondos</a>
+        <button class="btn btn-primary mx-3" (click)="open(content)"  >Retirar Fondos</button>
         <button class="btn btn-secondary mx-3" (click)="goToHistory()">Historial de Transacciones</button>
     </div>
   </div>
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Añadir Saldo a Cuenta.</h4>
+      <button type="button" class="close" aria-label="Close" (click)="close()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <form >
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label for="amount">Monto:</label>
+          <input class="form-control" type="number" name="amount" id="amount" [(ngModel)]="retirement.amount"/>
+        </div>
+        <div class="form-group">
+          <label for="amount">Transferir al banco:</label>
+          <select  id="bank" name="bank" [(ngModel)]="retirement.bank_to" class="form-control" required="required">
+            <option value="acct.bank" *ngFor="let acct of accounts" > {{acct.bank}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" (click)="sendRetirement()" >Enviar</button>
+      </div>
+    </form>
+  </ng-template>

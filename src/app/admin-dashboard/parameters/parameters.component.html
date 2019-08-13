@@ -1,0 +1,92 @@
+<div id="content-wrapper">
+
+  <!-- <div class="container"> -->
+
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="#">Parametros de la aplicación</a>
+      </li>
+    </ol>
+
+    <h3 class="text-center">Administracion de Parametros</h3>
+    <hr>
+    <div class="container">
+      <table class="table table-hoverable">
+        <thead class="text-center thead-dark">
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor</th>
+          <th class="align-content-end justify-content-end ali">
+            <button class="btn btn-success" (click)="open('Crear', param)" >Nuevo</button>
+          </th>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor="let paramr of parameters" >
+              <td>{{paramr.name}}</td>
+              <td>{{paramr.description}}</td>
+              <td>{{paramr.value}}</td>
+              <td>
+                <button class="btn btn-warning mx-1" (click)="open('Modificar',param, paramr)" >Editar</button>
+                <button class="btn btn-danger mx-1" (click)="openConfirm(confirm, paramr )"  >Eliminar</button>
+              </td>
+            </tr>
+            <tr *ngIf="!parameters"><td colspan="4" class="text-center">No existen parametros registrados</td></tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+<ng-template #param let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">{{action}} Parametro {{parameter.name}}</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+      <div class="form-group">
+        <label for="">Nombre de parametro:</label>
+        <input class="form-control" placeholder="No usar ESPACIOS en este Campo" type="text" name="name" id="name" [(ngModel)]="parameter.name"/>
+      </div>
+      <div class="form-group">
+          <label for="">Descripción:</label>
+          <input class="form-control" type="text" name="description" id="description" [(ngModel)]="parameter.description"/>
+        </div>
+        <div class="form-group">
+            <label for="">Valor:</label>
+            <input class="form-control" type="text" name="value" id="value" [(ngModel)]="parameter.value"/>
+          </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="save()" >Guardar</button>
+  </div>
+</ng-template>
+
+
+<ng-template #confirm let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmar</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+      <h3 class="text-center">¿Esta Seguro de Eliminar el Parametro {{parameter.name}}?</h3>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="close()" >Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="delete()" >Aceptar</button>
+  </div>
+</ng-template>

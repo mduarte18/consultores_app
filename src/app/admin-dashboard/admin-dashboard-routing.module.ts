@@ -1,3 +1,4 @@
+import { ParametersComponent } from './parameters/parameters.component';
 import { UsersComponent } from './users/users.component';
 import { AMainComponent } from './a-main/a-main.component';
 import { CreateAdminComponent } from './create-admin/create-admin.component';
@@ -35,8 +36,8 @@ const routes: Routes = [{
       component: ApproveBalanceConsultantComponent
     },
     {
-      path: 'users',
-      component: UsersComponent
+      path: 'parameters',
+      component: ParametersComponent
     },
     {
       path: 'new_admin',

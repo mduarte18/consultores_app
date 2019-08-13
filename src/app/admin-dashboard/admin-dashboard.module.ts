@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { SharedModuleModule } from './../shared-module/shared-module.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,13 +14,15 @@ import { AsidebarComponent } from './asidebar/asidebar.component';
 import { AtopbarComponent } from './atopbar/atopbar.component';
 import { AMainComponent } from './a-main/a-main.component';
 import { UsersComponent } from './users/users.component';
+import { ParametersComponent } from './parameters/parameters.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent],
+  declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent, ParametersComponent],
   imports: [
     CommonModule,
     AdminDashboardRoutingModule,
-    SharedModuleModule
+    SharedModuleModule,
+    FormsModule
   ]
 })
 export class AdminDashboardModule { }

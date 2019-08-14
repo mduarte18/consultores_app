@@ -38,20 +38,20 @@
         </div>
         <div class="form-group">
             <label for="for_date">Fecha de la consulta</label>
-            <input type="date" class="form-control" id="for_date" name="for_date" (change)="setPriceForDating()" [(ngModel)]="dating.for_date">
+            <input type="date" class="form-control" id="for_date" name="for_date" [(ngModel)]="dating.for_date">
         </div>
 
         <div class="row">
             <div class="col">
                 <div class="form-group">
                     <label for="date">Hora Inical</label>
-                    <input id="time_from" class="form-control" name="time_from" type="time" (change)="setPriceForDating()" [(ngModel)]="dating.time_from">
+                    <input id="time_from" class="form-control" name="time_from" type="time" [(ngModel)]="dating.time_from">
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     <label for="time">Hora Cierre</label>
-                    <input id="time_up" class="form-control" name="time_up" type="time" (change)="setPriceForDating()" [(ngModel)]="dating.time_up">
+                    <input id="time_up" class="form-control" name="time_up" type="number" (change)="setPriceForDating()" [(ngModel)]="time">
                 </div>
             </div>
         </div>

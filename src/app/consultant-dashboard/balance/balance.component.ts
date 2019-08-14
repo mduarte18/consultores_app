@@ -23,8 +23,12 @@ export class BalanceComponent implements OnInit {
   // formData = new FormData();
 
   accounts = {};
-  retirement:any={};
+  retirement: any = {};
 
+  payments: any[];
+  retirements: any[];
+
+  uploads: string = GLOBAL.uploadsUrl;
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
     private toaster: ToastrService, private modal: NgbModal) {
@@ -36,6 +40,22 @@ export class BalanceComponent implements OnInit {
     );
 
     this.gatAccounts();
+
+    this.loader.show();
+
+    this.globalService.getPaymentsConsultant(this.consultant.id).subscribe(
+      result => {
+        console.log(result)
+        this.payments=result;
+      }
+    )
+
+    this.globalService.getRetirementsConsultant(this.consultant.id).subscribe(
+      result => {
+        console.log(result)
+        this.retirements=result;
+      }
+    )
 
   }
 
@@ -56,25 +76,25 @@ export class BalanceComponent implements OnInit {
   sendRetirement() {
     this.loader.show();
     console.log('enviado');
-    this.retirement.consultant_id=this.consultant.id;
-    this.retirement.retirement_status='P';
+    this.retirement.consultant_id = this.consultant.id;
+    this.retirement.retirement_status = 'P';
 
     this.globalService.createRetirement(this.retirement).subscribe(
       result => {
         console.log(result);
-        if('ok'===result){
+        if ('ok' === result) {
           this.modal.dismissAll();
           this.loader.hide();
           this.toaster.success('Retiro solicitado.')
-        }else{
+        } else {
           this.loader.hide();
           this.toaster.error('error al solicitar retiro.')
         }
-       },
+      },
       error => {
         console.log(error);
         this.loader.hide();
-        this.toaster.error(error.message,'Error:');
+        this.toaster.error(error.message, 'Error:');
       }
     );
   }

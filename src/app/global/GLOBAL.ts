@@ -1,3 +1,4 @@
+import { Parameter } from './../interfaces/Parameter';
 export class GLOBAL {
   // static apiUrl = 'http://localhost:8000/api';
   static apiUrl = window.location.host.includes('localhost') ? '/api' : 'https://cors-anywhere.herokuapp.com/https://murmuring-river-89792.herokuapp.com/api';
@@ -21,5 +22,22 @@ export class GLOBAL {
         }
       }
     }
+  }
+
+  static getParameter(param:string) {
+    if (typeof (Storage) !== undefined) {
+      if (localStorage.getItem('app_parameters')) {
+        let parameters:Parameter[] = JSON.parse(localStorage.getItem('app_parameters'));
+        console.log(parameters);
+        let result=parameters.find(x => x.name === param).value;
+        console.log(result);
+        return result;
+      }
+    }
+  }
+
+  static zeroPad(num, places) {
+    var zero = places - num.toString().length + 1;
+    return Array(+(zero > 0 && zero)).join("0") + num;
   }
 }

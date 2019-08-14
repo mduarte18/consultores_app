@@ -1,3 +1,4 @@
+import { GLOBAL } from 'src/app/global/GLOBAL';
 import { User } from './../../interfaces/User';
 import { GlobalService } from './../../services/global.service';
 import { Component, OnInit } from '@angular/core';
@@ -21,12 +22,43 @@ export class TansactionsComponent implements OnInit {
   depositAmount: number = 0;
   formData = new FormData();
 
+  uploads: string = GLOBAL.uploadsUrl;
+
+  payments: any[];
+  deposits: any[];
+
   constructor(private modalService: NgbModal, private formBuilder: FormBuilder,
     private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
     private toaster: ToastrService) {
     this.globalService.getBalanceUser(this.user.id).subscribe(
       result => { this.balanceUser = result },
       error => console.log(error)
+    );
+
+    this.loader.show()
+    this.globalService.getPaymentsUser(this.user.id).subscribe(
+      result => {
+        this.payments = result;
+        console.log(this.payments)
+        this.loader.hide()
+      },
+      error => {
+        this.loader.hide()
+        console.log(error)
+      }
+    );
+
+    this.loader.show()
+    this.globalService.getDepositsUser(this.user.id).subscribe(
+      result => {
+        this.deposits = result;
+        console.log(this.deposits)
+        this.loader.hide()
+      },
+      error => {
+        this.loader.hide()
+        console.log(error)
+      }
     );
   }
 
@@ -52,21 +84,31 @@ export class TansactionsComponent implements OnInit {
     this.formData.append('bank', this.uploadForm.get('bank').value);
     this.formData.append('referenceno', this.uploadForm.get('referenceno').value);
     this.formData.append('payment_method', this.uploadForm.get('payment_method').value);
-    this.formData.append('user_id',this.user.id.toString());
+    this.formData.append('user_id', this.user.id.toString());
+
+
 
     console.log(this.formData);
+    if (this.uploadForm.get('deposit').value) {
+      this.globalService.uploadDeposit(this.formData).subscribe(
+        result => {
+          console.log(result);
+          this.loader.hide();
+          this.toaster.success('Se ha enviado la solicitud correctamente');
+        },
+        error => {
+          console.log(error);
+          this.loader.hide();
+          this.toaster.error(error.message, 'Error:');
+        }
+      )
+      this.uploadForm.get('amount').setValue(0);
+      this.uploadForm.get('referenceno').setValue('');
+      this.modalService.dismissAll();
+    } else {
+      this.toaster.error('Debe anexar una captura de referencia del pago.', 'Error:');
+    }
 
-    this.globalService.uploadDeposit(this.formData).subscribe(
-      result => { console.log(result);
-                  this.loader.hide();
-                  this.toaster.success('Se ha enviado la solicitud correctamente'); },
-      error => { console.log(error);
-                  this.loader.hide();
-                  this.toaster.error(error.message, 'Error:'); }
-    )
-    this.uploadForm.get('amount').setValue(0);
-    this.uploadForm.get('referenceno').setValue('');
-    this.modalService.dismissAll();
   }
 
   close() {

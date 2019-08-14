@@ -45,9 +45,9 @@ export class ParametersComponent implements OnInit {
       this.globalService.createParameter(this.parameter).subscribe(
         result => {
           if ('ok' === result) {
-            this.getParameters();
             this.toaster.success('Registro guardado.');
             this.loader.hide();
+          this.getParameters();
             console.log(result);
             this.modal.dismissAll();
           } else {

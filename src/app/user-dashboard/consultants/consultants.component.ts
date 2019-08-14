@@ -1,3 +1,4 @@
+import { GLOBAL } from './../../global/GLOBAL';
 import { TimeFormat } from './../../global/convertFrom24To12Format';
 import { Dating } from './../../interfaces/Dating';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,11 +18,13 @@ export class ConsultantsComponent implements OnInit {
 
   user: User = JSON.parse(localStorage.getItem('user_data'));
   consultant = {} as Consultant;
-  time: string = '';
 
   consultants: Consultant[];
   type: string = 'ALL';
   dating = {} as Dating;
+
+  time: number = 0;
+  price_per_hour = GLOBAL.getParameter('Salario_Asesores');
 
   formatTime: number = 0;
 
@@ -154,11 +157,13 @@ export class ConsultantsComponent implements OnInit {
 
   setPriceForDating() {
 
-    if(this.dating.for_date && this.dating.time_from && this.dating.time_up){
-      var date1 = new Date(this.dating.for_date+' '+this.dating.time_from).getTime();
-      var date2 = new Date(this.dating.for_date+' '+this.dating.time_up).getTime();
-      var msec = date2 - date1;
-      this.dating.price=(msec/60000/60)*parseInt(this.consultant.price_per_hour);
+    if(this.dating.for_date && this.dating.time_from && this.price_per_hour && this.time){
+      var temp = new Date(this.dating.for_date+' '+this.dating.time_from);
+      temp.setHours(temp.getHours()+this.time);
+      var msec = temp.getHours()+':'+GLOBAL.zeroPad(temp.getMinutes(),2);
+      this.dating.time_up=msec;
+      console.log(this.dating);
+      this.dating.price=parseInt(this.price_per_hour)*this.time;
     }else{
        return;
     }

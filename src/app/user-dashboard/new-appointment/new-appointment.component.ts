@@ -1,3 +1,4 @@
+import { GLOBAL } from './../../global/GLOBAL';
 import { Dating } from './../../interfaces/Dating';
 import { User } from './../../interfaces/User';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -20,6 +21,9 @@ export class NewAppointmentComponent implements OnInit {
   dating = {} as Dating;
   consultant = {} as Consultant;
 
+  time: number = 0;
+  price_per_hour = GLOBAL.getParameter('Salario_Asesores');
+
 
 
   constructor(private globalService:GlobalService, private loader: Ng4LoadingSpinnerService,
@@ -27,7 +31,7 @@ export class NewAppointmentComponent implements OnInit {
 
   ngOnInit() {
     this.loader.show();
-    this.globalService.getAllConsultants({type:this.type}).subscribe(
+    this.globalService.getAllActivateConsultants({type:this.type}).subscribe(
       result =>{
         this.consultants=result;
         this.loader.hide()
@@ -42,7 +46,7 @@ export class NewAppointmentComponent implements OnInit {
   getConsultants(type){
     console.log(type);
     this.loader.show();
-    this.globalService.getAllConsultants({type:type}).subscribe(
+    this.globalService.getAllActivateConsultants({type:type}).subscribe(
       result =>{
         console.log(result);
         this.consultants=result;
@@ -83,16 +87,30 @@ export class NewAppointmentComponent implements OnInit {
     );
   }
 
+  // setPriceForDating() {
+
+  //   if(this.dating.for_date && this.dating.time_from && this.dating.time_up){
+  //     var date1 = new Date(this.dating.for_date+' '+this.dating.time_from).getTime();
+  //     var date2 = new Date(this.dating.for_date+' '+this.dating.time_up).getTime();
+  //     var msec = date2 - date1;
+  //     this.dating.price=(msec/60000/60)*parseInt(this.consultant.price_per_hour);
+  //   }else{
+  //      return;
+  //   }
+
+  // }
   setPriceForDating() {
 
-    if(this.dating.for_date && this.dating.time_from && this.dating.time_up){
-      var date1 = new Date(this.dating.for_date+' '+this.dating.time_from).getTime();
-      var date2 = new Date(this.dating.for_date+' '+this.dating.time_up).getTime();
-      var msec = date2 - date1;
-      this.dating.price=(msec/60000/60)*parseInt(this.consultant.price_per_hour);
+    if(this.dating.for_date && this.dating.time_from && this.price_per_hour && this.time){
+      var temp = new Date(this.dating.for_date+' '+this.dating.time_from);
+      temp.setHours(temp.getHours()+this.time);
+      var msec = temp.getHours()+':'+GLOBAL.zeroPad(temp.getMinutes(),2);
+      this.dating.time_up=msec;
+      this.dating.price=parseInt(this.price_per_hour)*this.time;
     }else{
        return;
     }
+
 
   }
 

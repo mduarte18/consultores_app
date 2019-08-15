@@ -12,7 +12,6 @@ export interface Consultant {
   phone_number?: string;
   updated_at?: string;
   validate: string;
-  price_per_hour?:string;
   office_hours_from?:string;
   office_hours_to?:string;
   career_id: string;

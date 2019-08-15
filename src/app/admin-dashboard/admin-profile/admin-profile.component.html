@@ -5,9 +5,49 @@
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="#">Perfil</a>
+      <a href="#">Cambio de Contraseña</a>
     </li>
   </ol>
 
+  <div class="container">
+    <div class="d-flex flex-column w-75">
+      <div class="form-group">
+        <label for="">Nueva contraseña</label>
+        <input class="form-control" type="password" name="new_password" id="new_password" [(ngModel)]="new_pass">
+      </div>
+      <div class="form-group">
+          <label for="">Confirmar nueva contraseña</label>
+          <input class="form-control" type="password" name="re_new_password" id="re_new_password" [(ngModel)]="re_new_pass">
+      </div>
+      <div class="w-100">
+        <button [className]="'btn btn-primary '+(re_new_pass!==new_pass?'disabled':'')" (click)="open(content)" >Cambiar Contraseña</button>
+      </div>
+    </div>
+  </div>
+
 
 </div>
+
+<ng-template #content let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmar</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+      <h5 class="text-center">Para confirmar cambio de contraseña, introduzca su contraseña actual.</h5>
+    </div>
+    <div class="form-group">
+        <input class="form-control" type="password" name="re_new_password" id="re_new_password" [(ngModel)]="modal_pass">
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="close()" >Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="change()" >Aceptar</button>
+  </div>
+</ng-template>

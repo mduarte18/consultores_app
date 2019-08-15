@@ -36,7 +36,37 @@
         <label>Numero de Telefóno</label>
         <input type="phone" class="form-control"  id="phone" name="phone" [(ngModel)]="consultant.phone_number">
       </div>
+
     </div> <!-- form-row.// -->
+    <div class="form-group">
+      <label>Estado de Residencia</label>
+      <select class="form-control"  id="state" name="state" [(ngModel)]="consultant.state">
+        <option [ngValue]="'Amazonas'">Amazonas</option>
+        <option [ngValue]="'Anzoátegui'">Anzoátegui</option>
+        <option [ngValue]="'Apure'">Apure</option>
+        <option [ngValue]="'Aragua'">Aragua</option>
+        <option [ngValue]="'Barinas'">Barinas</option>
+        <option [ngValue]="'Bolívar'">Bolívar</option>
+        <option [ngValue]="'Carabobo'">Carabobo</option>
+        <option [ngValue]="'Cojedes'">Cojedes</option>
+        <option [ngValue]="'Delta Amacuro'">Delta Amacuro</option>
+        <option [ngValue]="'Distrito Capital'">Distrito Capital</option>
+        <option [ngValue]="'Falcón'">Falcón</option>
+        <option [ngValue]="'Guárico'">Guárico</option>
+        <option [ngValue]="'Lara'">Lara</option>
+        <option [ngValue]="'Mérida'">Mérida</option>
+        <option [ngValue]="'Miranda'">Miranda</option>
+        <option [ngValue]="'Monagas'">Monagas</option>
+        <option [ngValue]="'Nueva Esparta'">Nueva Esparta</option>
+        <option [ngValue]="'Portuguesa'">Portuguesa</option>
+        <option [ngValue]="'Sucre'">Sucre</option>
+        <option [ngValue]="'Táchira'">Táchira</option>
+        <option [ngValue]="'Trujillo'">Trujillo</option>
+        <option [ngValue]="'Vargas'">Vargas</option>
+        <option [ngValue]="'Yaracuy'">Yaracuy</option>
+        <option [ngValue]="'Zulia'">Zulia</option>
+      </select>
+    </div>
     <div class="form-group">
       <label>Contraseña</label>
         <input class="form-control" type="password"  id="pass" name="pass" [(ngModel)]="consultant.password">

@@ -161,4 +161,17 @@ export class GlobalService {
   getRetirementsConsultant(consultant_id): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/retirement/get_retirement_consultant', {consultant_id:consultant_id}, this.httpOptions);
   }
+
+  reporteDatingForState(): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/report_for_states', {}, this.httpOptions);
+  }
+  reporteDatingForCareers(): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/report_for_careers', {}, this.httpOptions);
+  }
+  changePassword(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/user/change_password/', params, this.httpOptions);
+  }
+  currentPassword(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/user/current_password/', params, this.httpOptions);
+  }
 }

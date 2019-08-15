@@ -149,7 +149,7 @@
         <div class="form-group">
           <label for="amount">Transferir al banco:</label>
           <select  id="bank" name="bank" [(ngModel)]="retirement.bank_to" class="form-control" required="required">
-            <option value="acct.bank" *ngFor="let acct of accounts" > {{acct.bank}}</option>
+            <option [ngValue]="acct.bank" *ngFor="let acct of accounts" > {{acct.bank}}</option>
           </select>
         </div>
       </div>

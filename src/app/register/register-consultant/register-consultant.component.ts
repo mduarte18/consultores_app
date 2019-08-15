@@ -16,7 +16,8 @@ export class RegisterConsultantComponent implements OnInit {
 
   public careerValue: any;
 
-  constructor(private consultantService: ConsultantService, private careerService: CareerService, private toaster: ToastrService) {
+  constructor(private consultantService: ConsultantService, private careerService: CareerService,
+    private toaster: ToastrService) {
 
     this.consultant = {
       identification_document: '',

@@ -33,6 +33,10 @@ const routes: Routes = [
     loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then(m => m.AdminDashboardModule)
   },
   {
+    path: 'report',
+    loadChildren: () => import('./reports-module/reports-module.module').then(m => m.ReportsModuleModule)
+  },
+  {
     path: 'not-found',
     component: PageNotFoundComponent
   },

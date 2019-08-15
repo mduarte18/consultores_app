@@ -22,6 +22,7 @@ export class RegisterUserComponent implements OnInit {
       birthdate: '',
       phone_number: '',
       attach_document: '',
+      state: '',
       email: '',
       password: '',
       role_id: '',

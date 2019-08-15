@@ -6,6 +6,7 @@ export interface User {
   birthdate: string;
   phone_number: string;
   attach_document: string;
+  state:string;
   email: string;
   password: string;
   remember_token?: string;

@@ -8,6 +8,80 @@
       <a href="#">Retiros solicitado por asesores</a>
     </li>
   </ol>
-
-
 </div>
+  <div class="container">
+      <table class="table table-hoverable">
+        <thead class="text-center thead-dark">
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Valor</th>
+          <th>Acciones</th>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor="let retir of retirments" >
+              <td>{{retir.consultant_name}}</td>
+              <td>{{retir.bank_to}}</td>
+              <td>{{retir.amount}}</td>
+              <td>
+                <button class="btn btn-success mx-1" (click)="open(send_retirment, retir)" >Aprobar</button>
+                <button class="btn btn-danger mx-1" (click)="open_confirm(confirm, retir.id)" >Rechazar</button>
+              </td>
+            </tr>
+            <tr *ngIf="!retirments" ><td colspan="4" class="text-center">No existen parametros registrados</td></tr>
+        </tbody>
+      </table>
+</div>
+
+
+<ng-template #send_retirment let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Consignar Retiro de Fondos al asesor {{retirment.consultant_name}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="uploadForm" (ngSubmit)="sendRetirement()"
+    enctype="multipart/form-data">
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="amount">Referencia de Transacción:</label>
+        <input class="form-control" type="text" name="referenceno"
+          id="referenceno" formControlName="referenceno" />
+      </div>
+      <div class="form-group">
+        <label for="deposit">Comprobante:</label>
+        <input type="file" class="form-control" name="file" id="file"
+          accept="image/x-png,image/jpeg" (change)="onFileSelect($event)" />
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </div>
+  </form>
+</ng-template>
+
+
+<ng-template #confirm let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Confirmar</h4>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="m-2">
+      <h3 class="text-center">¿Esta Seguro de rechazar esta solicitud?</h3>
+    </div>
+  </div>
+  <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="close()" >Cancelar</button>
+    <button type="button" class="btn btn-success" (click)="rejected()"  >Aceptar</button>
+  </div>
+</ng-template>
+

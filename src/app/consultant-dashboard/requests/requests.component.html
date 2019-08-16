@@ -75,6 +75,31 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-danger m-2" (click)="responseRequest('Rechazada')">Declinar Asesoria</button>
-      <button type="button" class="btn btn-success" (click)="responseRequest('Aprobada')">Aceptar cita</button>
+      <button type="button" class="btn btn-success" (click)="open_url(url)">Aceptar cita</button>
+    </div>
+  </ng-template>
+
+  <ng-template #url let-modal class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Sala de Conferencia</h4>
+      <button type="button" class="close" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="date"><b>Sala virtual para conferencia.</b></label><br>
+          <small class="text-muted">Esta sera suministrada al cliente para poder ingresar a una sala para las video conferencias.</small>
+          <input id="conference_room_url" class="form-control text-right" name="conference_room_url" type="text"
+            [(ngModel)]="tempDating.conference_room_url">
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger m-2"  (click)="modal.dismiss('Cross click')">Cerrar</button>
+      <button type="button" class="btn btn-success" (click)="responseRequest('Aprobada')">Guardar y Aceptar</button>
     </div>
   </ng-template>

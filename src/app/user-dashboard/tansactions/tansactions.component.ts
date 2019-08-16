@@ -86,8 +86,6 @@ export class TansactionsComponent implements OnInit {
     this.formData.append('payment_method', this.uploadForm.get('payment_method').value);
     this.formData.append('user_id', this.user.id.toString());
 
-
-
     console.log(this.formData);
     if (this.uploadForm.get('deposit').value) {
       this.globalService.uploadDeposit(this.formData).subscribe(

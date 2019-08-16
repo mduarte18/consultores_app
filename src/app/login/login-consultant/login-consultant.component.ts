@@ -16,7 +16,6 @@ export class LoginConsultantComponent implements OnInit {
 
   constructor(private globalService: GlobalService, private toaster: ToastrService, private loader: Ng4LoadingSpinnerService) {
     console.log('Login asesor iniciado.');
-    // if()
     console.log(JSON.parse(localStorage.getItem('user_data')));
   }
 

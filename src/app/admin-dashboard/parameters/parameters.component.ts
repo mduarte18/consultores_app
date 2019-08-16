@@ -1,3 +1,4 @@
+import { Bank } from './../../interfaces/Bank';
 import { Parameter } from './../../interfaces/Parameter';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { GlobalService } from './../../services/global.service';
@@ -12,13 +13,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ParametersComponent implements OnInit {
 
-  parameters:Parameter[];
+  parameters: Parameter[];
   parameter = {} as Parameter;
   action: string = '';
+
+  banks: Bank[];
+
+  bank = {} as Bank;
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
     private toaster: ToastrService, private modal: NgbModal) {
     this.getParameters();
+    this.getBanks();
   }
 
   ngOnInit() {
@@ -47,7 +53,7 @@ export class ParametersComponent implements OnInit {
           if ('ok' === result) {
             this.toaster.success('Registro guardado.');
             this.loader.hide();
-          this.getParameters();
+            this.getParameters();
             console.log(result);
             this.modal.dismissAll();
           } else {
@@ -105,9 +111,25 @@ export class ParametersComponent implements OnInit {
     );
   }
 
-  delete(){
+  getBanks() {
     this.loader.show();
-    this.globalService.deleteParameters(this.parameter.id,this.parameter).subscribe(
+    this.globalService.getBanks({}).subscribe(
+      result => {
+        this.banks = result;
+        console.log(result)
+        this.loader.hide();
+      },
+      error => {
+        this.loader.hide();
+        console.log(error);
+        this.toaster.error(error.message, 'Error:')
+      }
+    );
+  }
+
+  delete() {
+    this.loader.show();
+    this.globalService.deleteParameters(this.parameter.id, this.parameter).subscribe(
       result => {
         if ('ok' === result) {
           this.getParameters();
@@ -129,13 +151,99 @@ export class ParametersComponent implements OnInit {
     )
   }
 
-  openConfirm(content, parameter){
-    this.parameter=parameter;
+  openConfirm(content, parameter) {
+    this.parameter = parameter;
     this.modal.open(content);
   }
 
-  close(){
+  close() {
     this.modal.dismissAll();
+  }
+
+  open_bank(action, content, data?) {
+    if (action === 'Crear') {
+      this.bank = { name: '', code: '', identification_document: '', account_type: '' };
+      this.action = action;
+    }
+    else if ('Modificar' === action) {
+      this.bank = data;
+      this.action = action;
+    }
+    this.modal.open(content);
+  }
+
+  save_bank() {
+    this.loader.show();
+
+    if ('Crear' === this.action) {
+      this.globalService.saveBanks(this.bank).subscribe(
+        result => {
+          if ('ok' === result) {
+            this.getBanks();
+            this.toaster.success('Registro Guardado')
+            this.modal.dismissAll();
+            this.loader.hide();
+          } else {
+            this.getBanks();
+            this.toaster.error('Registro no guardado')
+            this.loader.hide();
+          }
+        }
+      );
+    }
+
+    if ('Modificar' === this.action) {
+      this.globalService.updateBanks(this.bank, this.bank.id).subscribe(
+        result => {
+          if ('ok' === result) {
+            this.getParameters();
+            this.toaster.success('Registro guardado.');
+            this.loader.hide();
+            console.log(result);
+            this.modal.dismissAll();
+          } else {
+            this.toaster.error('Error al guardar el registro');
+            this.loader.hide();
+            console.log(result);
+          }
+        },
+        error => {
+          console.log(error);
+          this.toaster.error(error.message, 'Error:');
+          this.loader.hide()
+        }
+      );
+    }
+
+  }
+
+  open_confirm_bank(content, bank){
+    this.bank = bank;
+    this.modal.open(content);
+  }
+
+  delete_bank() {
+    this.loader.show();
+    this.globalService.deleteBanks(this.bank, this.bank.id).subscribe(
+      result => {
+        if ('ok' === result) {
+          this.getBanks();
+          this.toaster.warning('Registro Eliminado.');
+          this.loader.hide();
+          console.log(result);
+          this.modal.dismissAll();
+        } else {
+          this.toaster.error('Error al guardar el registro');
+          this.loader.hide();
+          console.log(result);
+        }
+      },
+      error => {
+        console.log(error);
+        this.toaster.error(error.message, 'Error:');
+        this.loader.hide()
+      }
+    )
   }
 
 }

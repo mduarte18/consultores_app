@@ -77,15 +77,6 @@
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <div class="col-xs-6">
-        <label for="password2">Presupuesto por Hora.</label>
-        <input type="number" class="form-control"
-          name="price_per_hour"
-          id="price_per_hour" placeholder="Presupuesto por Hora"
-          [(ngModel)]="consultant.price_per_hour">
-      </div>
-    </div>
       <div class="form-group">
           <button type="submit"  [className]="(consultant.password===rePass)&&(rePass&&consultant.password)?' btn btn-primary btn-block  ':' btn btn-primary btn-block disabled'"  id="send-data" (click)="register_consultant()"> Registrar  </button>
       </div> <!-- form-group// -->

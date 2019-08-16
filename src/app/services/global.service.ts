@@ -106,6 +106,10 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/dating/cancelled_dating', { dating_id: dating_id }, this.httpOptions);
   }
 
+  finishDating(dating_id): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/finished_dating', { dating_id: dating_id }, this.httpOptions);
+  }
+
   getAllDeposits(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/deposit/get_all_deposits', params, this.httpOptions);
   }
@@ -174,4 +178,29 @@ export class GlobalService {
   currentPassword(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/user/current_password/', params, this.httpOptions);
   }
+  getRequestRetirements(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/retirement/get_request_retirements', params, this.httpOptions);
+  }
+  uploadRetirement(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/retirement/upload', params, this.httpOptions);
+  }
+  rejectRetirement(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/retirement/reject_retirement', params, this.httpOptions);
+  }
+
+  getBanks(params): Observable<any> {
+    return this.httpClient.get(this.apiUrl + '/bank', this.httpOptions);
+  }
+  saveBanks(bank): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/bank', bank, this.httpOptions);
+  }
+
+  updateBanks(bank,id): Observable<any> {
+    return this.httpClient.put(this.apiUrl + '/bank/'+id, bank, this.httpOptions);
+  }
+
+  deleteBanks(bank,id): Observable<any> {
+    return this.httpClient.delete(this.apiUrl + '/bank/'+id, bank);
+  }
+
 }

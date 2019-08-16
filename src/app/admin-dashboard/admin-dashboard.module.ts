@@ -1,4 +1,4 @@
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModuleModule } from './../shared-module/shared-module.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -23,7 +23,8 @@ import { ReportsComponent } from './reports/reports.component';
     CommonModule,
     AdminDashboardRoutingModule,
     SharedModuleModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminDashboardModule { }

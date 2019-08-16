@@ -11,7 +11,7 @@
     <div class="col-md-4 m-1" *ngFor="let dating of datings$">
       <div class="card">
         <div class="card-body text-center">
-          <i [className]="'fas fa-clock fa-3x my-2 '+('Solicitado'===dating.dating_status?'text-warning':('Aprobada'===dating.dating_status?'text-success':'text-danger'))"
+          <i [className]="'fas fa-clock fa-3x my-2 '+('Solicitado'===dating.dating_status?'text-warning':(('Aprobada'===dating.dating_status || 'Finalizada'===dating.dating_status)?'text-success':'text-danger'))"
           ></i>
           <h5 class="card-title">{{dating.title}}</h5>
           <h6 class="card-title">{{dating.summary}}</h6>
@@ -22,6 +22,8 @@
               (click)="open(request_info, dating)">Ver Información</button>
             <button [className]="'Solicitado'===dating.dating_status?'btn
               btn-danger m-1':'d-none'" class="" data-toggle="modal" (click)="open(confirm_cancel, dating)">Cancelar Solicitud</button>
+              <button [className]="('Aprobada'===dating.dating_status)?'btn
+              btn-success m-1':'d-none'" class="" data-toggle="modal" (click)="open(confirm_finish, dating)">Finalizar Asesoria</button>
           </div>
 
         </div>
@@ -60,9 +62,12 @@
       <div class="m-1">
         <span><b>Asesor: </b>{{dating.conape}}  {{dating.conname}}</span><br>
       </div>
+      <div [className]="'m-1 '+'Solicitado'===dating.dating_status?'d-none':('Aprobada'===dating.dating_status?'':'d-none')">
+        <span><b>Sala de Conferencia: </b> <a [href]="dating.conference_room_url" target="_blank"> Ir a la sala. &nbsp;<i class="fas fa-external-link-alt"></i></a></span><br>
+      </div>
       <div class="m-1">
         <span><b>Estado: </b> <span
-          [className]="'Solicitado'===dating.dating_status?'text-warning':('Aprobada'===dating.dating_status?'text-success':'text-danger')">{{dating.dating_status}}</span></span><br>
+          [className]="'Solicitado'===dating.dating_status?'text-warning':(('Aprobada'===dating.dating_status || 'Finalizada'===dating.dating_status)?'text-success':'text-danger')">{{dating.dating_status}}</span></span><br>
       </div>
     </div>
   </div>
@@ -87,5 +92,25 @@
   <div class="modal-footer">
     <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
     <button type="button" class="btn btn-primary ml-2" (click)="cancelledDating()">Aceptar</button>
+  </div>
+</ng-template>
+
+<ng-template #confirm_finish let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Confirmar finalizacion y cierre de la asesoria.</h5>
+    <button type="button" class="close" aria-label="Close"
+      (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>La asesoria <b>"{{dating.title}}"</b> solo debe ser finalizada luego de su fecha estipulada, si esta información es correcta puede proceder.
+    Gracias por usar nuestros servicios.</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="close()">Cerrar</button>
+    <button type="button" class="btn btn-primary ml-2" (click)="finishedDating()">Aceptar</button>
   </div>
 </ng-template>

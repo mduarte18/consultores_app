@@ -68,6 +68,10 @@ export class RequestsComponent implements OnInit {
 
   }
 
+  open_url(content) {
+    this.modal.open(content);
+  }
+
   close() {
     this.modal.dismissAll();
     this.tempDating = {} as Dating;

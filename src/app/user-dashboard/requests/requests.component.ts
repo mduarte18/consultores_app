@@ -70,7 +70,27 @@ export class RequestsComponent implements OnInit {
         console.error(error);
       }
     )
-
+  }
+  finishedDating(){
+    this.loader.show();
+    this.modal.dismissAll();
+    this.globalService.finishDating(this.dating.id).subscribe(
+      response=>{
+        if('ok'===response){
+          this.getDatings(this.user.id);
+          this.loader.hide();
+          this.toaster.success('Solicitud de asesoria Finalizada.','Exitoso');
+        }else{
+          this.loader.hide();
+          this.toaster.error('No se ha podido finalizar.','Error:');
+        }
+      },
+      error=>{
+        this.loader.hide();
+        this.toaster.error('Ha ocurrido un error.','Error:');
+        console.error(error);
+      }
+    )
   }
 
 }

@@ -51,6 +51,12 @@ export class BankAccountComponent implements OnInit {
 
     this.loader.show();
 
+    if(isNaN(Number(this.account.account_number))){
+      this.toaster.error('El número de Cuenta Bancaria solo admite números.', 'Error:');
+      this.loader.hide();
+      return;
+    }
+
     this.globalService.createAccountForConsultant(this.account).subscribe(
       result => {
         if ('ok' === result) {

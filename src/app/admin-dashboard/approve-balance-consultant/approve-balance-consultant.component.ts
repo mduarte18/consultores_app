@@ -51,6 +51,13 @@ export class ApproveBalanceConsultantComponent implements OnInit {
     this.formData.append('id', this.retirment.id.toString());
 
     console.log(this.formData);
+
+    if(isNaN(Number(this.uploadForm.get('referenceno').value))){
+      this.toaster.error('La referencia de la transacción solo admite números.', 'Error:');
+      this.loader.hide();
+      return;
+    }
+
     if (this.uploadForm.get('file').value) {
       this.globalService.uploadRetirement(this.formData).subscribe(
         result => {

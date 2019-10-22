@@ -11,13 +11,15 @@ import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner'
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { OnlyDigitsDirective } from './only-digits.directive'
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    OnlyDigitsDirective
   ],
   imports: [
     BrowserModule,

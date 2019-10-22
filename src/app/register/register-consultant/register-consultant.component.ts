@@ -54,21 +54,70 @@ export class RegisterConsultantComponent implements OnInit {
   }
 
   register_consultant() {
-    this.consultantService.create_consultant(this.consultant).subscribe(
-      result => {
-        if (result !== 'success') {
-          console.log(result);
-          this.toaster.error(result, 'Error:');
-        } else {
-          console.log(result.data);
-          this.toaster.success('¡Registro Exitoso!');
-          setTimeout(() => { location.href = '/login'; }, 5000);
-        }
-      },
-      error => {
-        console.log(error);
-        this.toaster.error(error, 'Error: ');
-      });
+    if (this.validate(this.consultant)) {
+      this.consultantService.create_consultant(this.consultant).subscribe(
+        result => {
+          if (result !== 'success') {
+            console.log(result);
+            this.toaster.error(result, 'Error:');
+          } else {
+            console.log(result.data);
+            this.toaster.success('¡Registro Exitoso!');
+            setTimeout(() => { location.href = '/login'; }, 5000);
+          }
+        },
+        error => {
+          console.log(error);
+          this.toaster.error(error, 'Error: ');
+        });
+    }
+  }
+
+
+  validate(user: Consultant): boolean {
+    console.log('validate');
+
+    if (!user.identification_document) {
+      this.toaster.error('El campo de Documento de Identidad es requerido', 'Error:');
+      return false;
+    }
+    if (isNaN(Number(user.identification_document))) {
+      this.toaster.error('El campo de Documento de Identidad solo permite números.', 'Error:');
+      return false;
+    }
+    if (!user.name) {
+      this.toaster.error('El campo de Nombres es requerido.', 'Error:');
+      return false;
+    }
+    if (!user.lastname) {
+      this.toaster.error('El campo de Apellidos es requerido.', 'Error:');
+      return false;
+    }
+    if (!user.password) {
+      this.toaster.error('El campo de Contraseña es requerido.', 'Error:');
+      return false;
+    }
+    if (!user.email) {
+      this.toaster.error('El campo de correo electronico es requerido.', 'Error:');
+      return false;
+    }
+    if (!user.phone_number) {
+      this.toaster.error('El campo de telefono es requerido.', 'Error:');
+      return false;
+    }
+    if (isNaN(Number(user.phone_number))) {
+      this.toaster.error('El campo de telefono solo permite números.', 'Error:');
+      return false;
+    }
+    if (!user.birthdate) {
+      this.toaster.error('El campo de Fecha de nacimiento es requerido.', 'Error:');
+      return false;
+    }
+    if (!user.office_hours_to || !user.office_hours_from) {
+      this.toaster.error('El campo de Horario de Atención es requerido.', 'Error:');
+      return false;
+    }
+    return true;
   }
 
 }

@@ -11,7 +11,7 @@
   <form>
       <div class="form-group">
           <label><small>Documento de identidad</small></label>
-            <input type="text" class="form-control" placeholder="" id="ci" name="ci" [(ngModel)]="consultant.identification_document">
+            <input type="text" class="form-control" OnlyDigits="true" id="ci" name="ci" [(ngModel)]="consultant.identification_document">
         </div>
     <div class="form-row">
       <div class="col form-group">

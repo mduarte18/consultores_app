@@ -41,7 +41,6 @@
     <div class="form-group">
       <label>Carrera</label>
       <select id="carrer_select" name="carrer_select" class="form-control" [(ngModel)]="consultant.career_id">
-          <!-- <option selected> Selecione una carrera...</option>-->
             <option *ngFor="let option of this.careerValue" [value]="option.id">{{option.name}}</option>
       </select>
     </div> <!-- form-group end.// -->

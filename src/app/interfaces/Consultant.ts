@@ -16,4 +16,5 @@ export interface Consultant {
   office_hours_to?:string;
   career_id: string;
   career_name?: string;
+  price_per_hour?:number;
 }

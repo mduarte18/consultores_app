@@ -93,4 +93,11 @@ export class RequestsComponent implements OnInit {
     )
   }
 
+  openLink(link){
+
+    console.log('Open Link');
+    window.open(link, '_blank');
+
+  }
+
 }

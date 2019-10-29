@@ -63,7 +63,7 @@
         <span><b>Asesor: </b>{{dating.conape}}  {{dating.conname}}</span><br>
       </div>
       <div [className]="'m-1 '+'Solicitado'===dating.dating_status?'d-none':('Aprobada'===dating.dating_status?'':'d-none')">
-        <span><b>Sala de Conferencia: </b> <a [href]="dating.conference_room_url" target="_blank"> Ir a la sala. &nbsp;<i class="fas fa-external-link-alt"></i></a></span><br>
+        <span><b>Sala de Conferencia: </b> <button class="btn btn-link text-decoration-none" (click)="openLink(dating.conference_room_url)"> Ir a la sala. &nbsp;<i class="fas fa-external-link-alt"></i></button></span><br>
       </div>
       <div class="m-1">
         <span><b>Estado: </b> <span

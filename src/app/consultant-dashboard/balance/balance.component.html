@@ -61,16 +61,16 @@
                                       <tr>
                                           <th>Referencia</th>
                                           <th>Captura</th>
-                                          <th>Metodo de Pago</th>
+                                          <th>banco Destino</th>
                                           <th>Monto</th>
                                           <th>Fecha</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      <tr *ngFor="let retirement of retirements" [className]="retirement.deposit_status==='A'?'text-success':(retirement.deposit_status==='P'?'text-warning':'text-danger')">
+                                      <tr *ngFor="let retirement of retirements" [className]="retirement.retirement_status==='A'?'text-success':(retirement.deposit_status==='P'?'text-warning':'text-danger')">
                                           <td>{{retirement.referenceno}}</td>
-                                          <td> <a [href]="uploads+retirement.document" class="btn btn-link"></a>Captura</td>
-                                          <td>{{retirement.payment_method}}</td>
+                                          <td> <a [href]="uploads+retirement.document" [className]="retirement.document?'btn btn-link':'d-none'" target="_blank">Captura</a></td>
+                                          <td>{{retirement.bank_to}}</td>
                                           <td>{{retirement.amount}}</td>
                                           <td>{{retirement.created_at}}</td>
                                       </tr>

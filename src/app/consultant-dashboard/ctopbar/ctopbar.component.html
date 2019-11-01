@@ -58,6 +58,8 @@
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
         <a class="dropdown-item" [routerLink]="['profile']">Perfil</a>
         <div class="dropdown-divider"></div>
+        <button class="dropdown-item" (click)="openModal(report)">Crear Reclamo</button>
+        <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Cerrar Sesión</a>
       </div>
     </li>
@@ -65,3 +67,29 @@
 
 </nav>
 <div [className]="'w-100 p-1 bg-danger text-center text-white '+(user.validate==='N'?'':'d-none') "><span>Necesita ser Validado.</span></div>
+
+<ng-template #report let-modal class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Reportar Incidente </h4>
+      <button type="button" class="close" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="reportTitle"><b>Titulo del Incidente.</b></label>
+          <input id="reportTitle" class="form-control" name="reportTitle" [(ngModel)]="reportTitle" placeholder="Titulo del Incidente"/>
+        </div>
+        <div class="form-group">
+          <label for="reportMessage"><b>Describa el incidente.</b></label>
+          <textarea id="reportMessage" class="form-control" name="reportMessage" [(ngModel)]="reportMessage" placeholder="Describa brevemente el incidente."></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="createReport()">Enviar Reporte</button>
+    </div>
+  </ng-template>

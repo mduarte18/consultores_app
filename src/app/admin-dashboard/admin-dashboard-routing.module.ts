@@ -1,8 +1,8 @@
+import { BugReportsComponent } from './bug-reports/bug-reports.component';
+import { AdvisoryReportsComponent } from './advisory-reports/advisory-reports.component';
 import { ReportsComponent } from './reports/reports.component';
 import { ParametersComponent } from './parameters/parameters.component';
-import { UsersComponent } from './users/users.component';
 import { AMainComponent } from './a-main/a-main.component';
-import { CreateAdminComponent } from './create-admin/create-admin.component';
 import { ApproveBalanceConsultantComponent } from './approve-balance-consultant/approve-balance-consultant.component';
 import { ApproveConsultantComponent } from './approve-consultant/approve-consultant.component';
 import { ApproveBalanceUserComponent } from './approve-balance-user/approve-balance-user.component';
@@ -44,6 +44,14 @@ const routes: Routes = [{
       path: 'reports',
       component: ReportsComponent
     },
+    {
+      path:'advisory_reports',
+      component:AdvisoryReportsComponent
+    },
+    {
+      path:'bug_reports',
+      component:BugReportsComponent
+    }
   ]
 }];
 

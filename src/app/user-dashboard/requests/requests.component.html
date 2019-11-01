@@ -63,7 +63,19 @@
         <span><b>Asesor: </b>{{dating.conape}}  {{dating.conname}}</span><br>
       </div>
       <div [className]="'m-1 '+'Solicitado'===dating.dating_status?'d-none':('Aprobada'===dating.dating_status?'':'d-none')">
-        <span><b>Sala de Conferencia: </b> <button class="btn btn-link text-decoration-none" (click)="openLink(dating.conference_room_url)"> Ir a la sala. &nbsp;<i class="fas fa-external-link-alt"></i></button></span><br>
+        <div class="d-flex">
+          <div>
+            <span>
+            <b>Sala de Conferencia: </b> <button class="btn btn-link text-decoration-none" (click)="openLink(dating.conference_room_url)"> Ir a la sala. &nbsp;<i class="fas fa-external-link-alt"></i></button>
+           </span>
+          </div>
+          <div class="ml-auto">
+            <button class="btn btn-link text-decoration-none" data-toggle="tooltip" data-placement="top" title="Reportar un problema sobre la sala de conferencia.">
+              <i class="fa fa-info-circle text-danger"></i>
+            </button>
+          </div>
+          <br>
+        </div>
       </div>
       <div class="m-1">
         <span><b>Estado: </b> <span

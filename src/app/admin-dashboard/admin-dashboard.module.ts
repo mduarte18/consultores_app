@@ -16,9 +16,11 @@ import { AMainComponent } from './a-main/a-main.component';
 import { UsersComponent } from './users/users.component';
 import { ParametersComponent } from './parameters/parameters.component';
 import { ReportsComponent } from './reports/reports.component';
+import { AdvisoryReportsComponent } from './advisory-reports/advisory-reports.component';
+import { BugReportsComponent } from './bug-reports/bug-reports.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent, ParametersComponent, ReportsComponent],
+  declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent, ParametersComponent, ReportsComponent, AdvisoryReportsComponent, BugReportsComponent],
   imports: [
     CommonModule,
     AdminDashboardRoutingModule,

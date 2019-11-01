@@ -5,27 +5,33 @@
       <a href="#">Solicitudes de Asesoria.</a>
     </li>
   </ol>
-
+  <div class="title text-center"><h1>Solicitudes Pendientes</h1></div>
   <div class="row justify-content-center">
 
     <div class="col-md-3 m-1" *ngFor="let dating of datings">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="card-title">{{dating.title}}</h5>
+          <h5 class="card-title">#{{dating.id}} - {{dating.title}}</h5>
           <h6 class="card-text font-weight-light">{{dating.summary}}</h6>
           <hr class="hr-light">
           <button class="btn btn-link text-center text-primary"
             data-toggle="modal"
-            [attr.data-datingid]="dating.id" [attr.data-title]="dating.title"
-            [attr.data-summary]="dating.summary"
-            [attr.data-price]="dating.price"
-            [attr.data-for_date]="dating.for_date"
-            [attr.data-userid]="dating.user_id"
-            [attr.data-time_from]="dating.time_from"
-            [attr.data-time_up]="dating.time_up"
-            [attr.data-solape]="dating.solape"
-            [attr.data-solname]="dating.solname"
-            (click)="open(content,$event)">Ver detalles</button>
+            (click)="open(content,dating)">Ver detalles</button>
+        </div>
+      </div>
+    </div>
+  </div><br><hr class="hr-dark"><br>
+  <div class="title text-center"><h1>Solicitudes Finalizadas</h1></div>
+  <div class="row justify-content-center">
+    <div class="col-md-3 m-1" *ngFor="let dating of finishedDatings">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">#{{dating.id}} - {{dating.title}}</h5>
+          <h6 class="card-text font-weight-light">{{dating.summary}}</h6>
+          <hr class="hr-light">
+          <button class="btn btn-link text-center text-primary"
+            data-toggle="modal"
+            (click)="openToReport(report,dating)">Enviar Reporte</button>
         </div>
       </div>
     </div>
@@ -48,12 +54,13 @@
         </div>
         <div class="form-group">
           <h4 for="date" class="text-center">{{tempDating.summary}}</h4>
-          <h5 for="date" class="text-center font-weight-light">Solicitado por: {{solname}} {{solape}}</h5>
+          <h5 for="date" class="text-center font-weight-light">Solicitado por:
+            {{solname}} {{solape}}</h5>
         </div>
         <div class="form-group">
           <label for="date"><b>Fecha:</b> {{tempDating.for_date}}</label>
         </div>
-        <div class="row  text-center">
+        <div class="row text-center">
           <div class="col">
             <div class="form-group">
               <label for="date"><b>Hora inicio:</b> {{tempDating.time_from}}</label>
@@ -68,14 +75,17 @@
 
         <div class="form-group">
           <label for="date"><b>Precio Sugerido de la Asesoria.</b></label>
-          <input id="price" class="form-control text-right" name="price" type="number"
+          <input id="price" class="form-control text-right" name="price"
+            type="number"
             [(ngModel)]="tempDating.price">
         </div>
       </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger m-2" (click)="responseRequest('Rechazada')">Declinar Asesoria</button>
-      <button type="button" class="btn btn-success" (click)="open_url(url)">Aceptar cita</button>
+      <button type="button" class="btn btn-danger m-2"
+        (click)="responseRequest('Rechazada')">Declinar Asesoria</button>
+      <button type="button" class="btn btn-success" (click)="open_url(url)">Aceptar
+        cita</button>
     </div>
   </ng-template>
 
@@ -92,14 +102,65 @@
       <form>
         <div class="form-group">
           <label for="date"><b>Sala virtual para conferencia.</b></label><br>
-          <small class="text-muted">Esta sera suministrada al cliente para poder ingresar a una sala para las video conferencias.</small>
-          <input id="conference_room_url" class="form-control text-right" name="conference_room_url" type="text"
+          <small class="text-muted">Esta sera suministrada al cliente para poder
+            ingresar a una sala para las video conferencias.</small>
+          <input id="conference_room_url" class="form-control text-right"
+            name="conference_room_url" type="text"
             [(ngModel)]="tempDating.conference_room_url">
         </div>
       </form>
     </div>
     <div class="modal-footer">
-        <button type="button" class="btn btn-danger m-2"  (click)="modal.dismiss('Cross click')">Cerrar</button>
-      <button type="button" class="btn btn-success" (click)="responseRequest('Aprobada')">Guardar y Aceptar</button>
+      <button type="button" class="btn btn-danger m-2"
+        (click)="modal.dismiss('Cross click')">Cerrar</button>
+      <button type="button" class="btn btn-success"
+        (click)="responseRequest('Aprobada')">Guardar y Aceptar</button>
+    </div>
+  </ng-template>
+
+  <ng-template #report let-modal class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Reportar Resultado - #{{finishedDating.id}} </h4>
+      <button type="button" class="close" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <h2 for="date" class="text-center">{{finishedDating.title}}</h2>
+          <!-- <input id="text" class="form-control" name="title" type="title"  > -->
+        </div>
+        <div class="form-group">
+          <h4 for="date" class="text-center">{{finishedDating.summary}}</h4>
+          <h5 for="date" class="text-center font-weight-light">Solicitado por:
+            {{solname}} {{solape}}</h5>
+        </div>
+        <div class="form-group">
+          <label for="date"><b>Fecha:</b> {{finishedDating.for_date}}</label>
+        </div>
+        <div class="row text-center">
+          <div class="col">
+            <div class="form-group">
+              <label for="date"><b>Hora inicio:</b> {{finishedDating.time_from}}</label>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="date"><b>Hora de cierre:</b> {{finishedDating.time_up}}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="date"><b>Observaciones de la asesoria.</b></label>
+          <textarea id="reportMessage" class="form-control" name="reportMessage" [(ngModel)]="reportMessage" placeholder="Describa brevemente su experiencia en esta asesoria."></textarea>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-success" (click)="createReport()">Enviar Reporte</button>
     </div>
   </ng-template>

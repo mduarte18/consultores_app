@@ -1,0 +1,78 @@
+<div id="content-wrapper">
+
+  <!-- <div class="container"> -->
+
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Reportes de Asesoria</a>
+    </li>
+  </ol>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center">Reportes</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Asesor</th>
+              <th scope="col">Fecha de Reporte</th>
+              <th scope="col">Titulo del Reporte</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data">
+              <th scope="row">{{ item.id }}</th>
+              <td>{{item.consultant_name+' '+item.consulant_lastname}}</td>
+              <td>{{ item.created_at | date:'medium' }}</td>
+              <td>{{item.report_title}}</td>
+              <td><button class="btn btn-primary" (click)="openModal(report, item)">Detalles</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #report let-modal class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{tempItem.report_title}} </h4>
+      <button type="button" class="close" aria-label="Close"
+        (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+        </div>
+        <div class="form-group">
+          <h4 for="date" class="text-center">{{tempItem.summary}}</h4>
+          <h5 for="date" class="text-center font-weight-light">Asesor:
+            {{tempItem.consultant_name}} {{tempItem.consulant_lastname}}</h5><br>
+            <h5 for="date" class="text-center font-weight-light">Asesorado:
+              {{tempItem.name}} {{tempItem.lastname}}</h5>
+        </div>
+        <div class="form-group">
+          <label for="date"><b>Fecha:</b> {{tempItem.for_date | date:'medium'}}</label>
+        </div>
+
+        <div class="form-group">
+          <label for="date"><b>Observaciones de la asesoria.</b></label>
+          <pre id="reportMessage" class="text-justify border p-4" name="reportMessage">{{tempItem.report_message}}</pre>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="close()">Cerrar</button>
+    </div>
+  </ng-template>

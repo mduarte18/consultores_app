@@ -10,7 +10,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { HistoryComponent } from './history/history.component';
 import { PaymentAppointmentComponent } from './payment-appointment/payment-appointment.component';
-import { BalanceComponent } from './balance/balance.component';
 import { TansactionsComponent } from './tansactions/tansactions.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,7 +23,7 @@ import { SharedModuleModule } from '../shared-module/shared-module.module';
   declarations: [UDashboardComponent,
     UtopbarComponent, UsidebarComponent, ProfileComponent,
     NewAppointmentComponent, HistoryComponent,
-    PaymentAppointmentComponent, BalanceComponent,
+    PaymentAppointmentComponent,
     TansactionsComponent, DashboardComponent,
     ConsultantsComponent, RequestsComponent
   ],

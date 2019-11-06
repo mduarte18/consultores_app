@@ -1,3 +1,4 @@
+import { AtopbarComponent } from './atopbar/atopbar.component';
 import { BugReportsComponent } from './bug-reports/bug-reports.component';
 import { AdvisoryReportsComponent } from './advisory-reports/advisory-reports.component';
 import { ReportsComponent } from './reports/reports.component';
@@ -14,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [{
   path: '',
-  component: AMainComponent,
+  component: AtopbarComponent,
   children: [
     {
       path: 'profile',

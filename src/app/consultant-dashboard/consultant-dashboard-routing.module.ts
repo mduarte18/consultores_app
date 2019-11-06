@@ -1,3 +1,4 @@
+import { CtopbarComponent } from './ctopbar/ctopbar.component';
 import { BankAccountComponent } from './bank-account/bank-account.component';
 import { ProfileComponent } from './profile/profile.component';
 import { BalanceComponent } from './balance/balance.component';
@@ -11,7 +12,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: CDashboardComponent,
+    component: CtopbarComponent,
     children: [
       {
         path: 'dashboard',

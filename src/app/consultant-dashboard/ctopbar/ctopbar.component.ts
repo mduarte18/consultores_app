@@ -1,3 +1,4 @@
+import { GLOBAL } from './../../global/GLOBAL';
 import { Consultant } from './../../interfaces/Consultant';
 import { Component, OnInit } from '@angular/core';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -48,6 +49,11 @@ export class CtopbarComponent implements OnInit {
         this.loader.hide();
       }
     );
+  }
+
+  logOut(): void {
+    localStorage.clear();
+    GLOBAL.redirectTo('/home');
   }
 
 }

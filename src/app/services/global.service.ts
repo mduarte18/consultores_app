@@ -214,4 +214,8 @@ export class GlobalService {
   createReportForBug(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/bug_report', params, this.httpOptions);
   }
+
+  getAllBugs(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/bug_report/get_all_reports', params, this.httpOptions);
+  }
 }

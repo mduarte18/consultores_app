@@ -1,3 +1,4 @@
+import { GLOBAL } from './../../global/GLOBAL';
 import { Bank } from './../../interfaces/Bank';
 import { Ng4LoadingSpinnerModule, Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { GlobalService } from 'src/app/services/global.service';
@@ -35,6 +36,11 @@ export class UtopbarComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  logOut(): void {
+    localStorage.clear();
+    GLOBAL.redirectTo('/home');
   }
 
 }

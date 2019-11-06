@@ -1,64 +1,82 @@
-<div id="content-wrapper">
+<div>
 
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="#">Nueva consulta</a>
-        </li>
-    </ol>
-
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Nueva consulta</a>
+    </li>
+  </ol>
+  <div class="d-flex justify-content-left mx-5">
     <form>
-        <h3 class="display-2 text-center">Nueva solicitud de asesoria.</h3>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Titulo</label>
-            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp" placeholder="Titulo" [(ngModel)]="dating.title">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Descripcion</label>
-            <textarea class="form-control" id="summary" name="summary" placeholder="Descripcion" [(ngModel)]="dating.summary"></textarea>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="career" id="psicologia" value="AP" checked (click)="getConsultants('AP')">
-            <label class="form-check-label" for="exampleRadios1">
-        Asesor Psicologico
-      </label>
-        </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="career" id="legal" value="AS" (click)="getConsultants('AS')">
-            <label class="form-check-label" for="exampleRadios2">
-        Asesor Legal
-      </label>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Asesor</label>
-            <select class="form-control" id="consultant_id" name="consultant_id" [(ngModel)]="dating.consultant_id" (change)="setConsultant($event)">
-        <option  value="">Seleccione un asesor</option>
-        <option *ngFor="let consultant of consultants" [ngValue]="consultant.id">{{consultant.name}} {{consultant.lastname}}</option>
-      </select>
-        </div>
-        <div class="form-group">
-            <label for="for_date">Fecha de la consulta</label>
-            <input type="date" class="form-control" id="for_date" name="for_date" [(ngModel)]="dating.for_date">
-        </div>
+      <h3 class="display-2 text-center">Nueva solicitud de asesoria.</h3>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Titulo</label>
+        <input type="text" class="form-control" id="title" name="title"
+          aria-describedby="emailHelp" placeholder="Titulo"
+          [(ngModel)]="dating.title">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Descripcion</label>
+        <textarea class="form-control" id="summary" name="summary"
+          placeholder="Descripcion" [(ngModel)]="dating.summary"></textarea>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="career"
+          id="psicologia"
+          value="AP" checked (click)="getConsultants('AP')">
+        <label class="form-check-label" for="exampleRadios1">
+          Asesor Psicologico
+        </label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="career" id="legal"
+          value="AS" (click)="getConsultants('AS')">
+        <label class="form-check-label" for="exampleRadios2">
+          Asesor Legal
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Asesor</label>
+        <select class="form-control" id="consultant_id" name="consultant_id"
+          [(ngModel)]="dating.consultant_id" (change)="setConsultant($event)">
+          <option value="">Seleccione un asesor</option>
+          <option *ngFor="let consultant of consultants"
+            [ngValue]="consultant.id">{{consultant.name}}
+            {{consultant.lastname}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="for_date">Fecha de la consulta</label>
+        <input type="date" class="form-control" id="for_date" name="for_date"
+          [(ngModel)]="dating.for_date">
+      </div>
 
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="date">Hora Inical</label>
-                    <input id="time_from" class="form-control" name="time_from" type="time" [(ngModel)]="dating.time_from">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="time">Hora Cierre</label>
-                    <input id="time_up" class="form-control" name="time_up" type="number" (change)="setPriceForDating()" [(ngModel)]="time">
-                </div>
-            </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="date">Hora Inical</label>
+            <input id="time_from" class="form-control" name="time_from"
+              type="time" [(ngModel)]="dating.time_from">
+          </div>
         </div>
-        <div class="form-group">
-            <label for="date">Presupuesto</label>
-            <input id="price" class="form-control" name="price" type="number" readonly="true" [(ngModel)]="dating.price">
+        <div class="col">
+          <div class="form-group">
+            <label for="time">Hora Cierre</label>
+            <input id="time_up" class="form-control" name="time_up"
+              type="number"
+              (change)="setPriceForDating()" [(ngModel)]="time">
+          </div>
         </div>
-        <button type="submit" class="btn btn-primary w-100" (click)="sendRequest()">Enviar solicitud</button>
+      </div>
+      <div class="form-group">
+        <label for="date">Presupuesto</label>
+        <input id="price" class="form-control" name="price" type="number"
+          readonly="true" [(ngModel)]="dating.price">
+      </div>
+      <button type="submit" class="btn btn-primary w-100"
+        (click)="sendRequest()">Enviar
+        solicitud</button>
     </form>
+  </div>
+
 </div>

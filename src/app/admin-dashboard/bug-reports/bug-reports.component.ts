@@ -11,10 +11,39 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BugReportsComponent implements OnInit {
 
+  data: any;
+  count: number;
+  tempItem: any;
+
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
-    private toaster: ToastrService, private modal: NgbModal) { }
+    private toaster: ToastrService, private modal: NgbModal) {
+    this.loader.show();
+    this.globalService.getAllBugs({}).subscribe(
+      result => {
+        console.log(result);
+        this.data = result;
+        this.loader.hide();
+
+      },
+      error => {
+        console.log(error)
+        this.loader.hide();
+
+      }
+    )
+  }
 
   ngOnInit() {
+  }
+
+  openModal(content, item){
+    this.tempItem=item;
+    this.modal.open(content);
+  }
+
+  close(){
+    this.tempItem={};
+    this.modal.dismissAll();
   }
 
 }

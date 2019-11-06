@@ -1,7 +1,7 @@
+import { UtopbarComponent } from './utopbar/utopbar.component';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { HistoryComponent } from './history/history.component';
 import { TansactionsComponent } from './tansactions/tansactions.component';
-import { BalanceComponent } from './balance/balance.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UDashboardComponent } from './u-dashboard/u-dashboard.component';
@@ -13,7 +13,7 @@ import { RequestsComponent } from './requests/requests.component';
 
 const routes: Routes = [{
   path: '',
-  component: UDashboardComponent,
+  component: UtopbarComponent,
   children: [
     {
       path: 'profile',
@@ -22,10 +22,6 @@ const routes: Routes = [{
     {
       path: 'dashboard',
       component: DashboardComponent
-    },
-    {
-      path: 'balance',
-      component: BalanceComponent
     },
     {
       path: 'transactions',

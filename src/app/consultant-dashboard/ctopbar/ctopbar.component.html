@@ -68,6 +68,16 @@
 </nav>
 <div [className]="'w-100 p-1 bg-danger text-center text-white '+(user.validate==='N'?'':'d-none') "><span>Necesita ser Validado.</span></div>
 
+<div id="wrapper">
+  <app-csidebar ></app-csidebar>
+  <div id="content-wrapper">
+    <div class="container-fluid">
+    <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</div>
+
 <ng-template #report let-modal class="modal fade" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-header">
@@ -93,3 +103,24 @@
       <button type="button" class="btn btn-success" (click)="createReport()">Enviar Reporte</button>
     </div>
   </ng-template>
+
+  <!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">¿Desea salir de la aplicacion?</h5>
+      <button class="close" type="button" data-dismiss="modal"
+        aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">Presione aceptar para cerrar sesión.</div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+      <button class="btn btn-primary" (click)="logOut()">Cerrar Sesión</button>
+    </div>
+  </div>
+</div>
+</div>

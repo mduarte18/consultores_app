@@ -1,3 +1,4 @@
+import { GLOBAL } from './../../global/GLOBAL';
 import { User } from './../../interfaces/User';
 import { Component, OnInit } from '@angular/core';
 
@@ -17,4 +18,8 @@ export class AtopbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  logOut(): void {
+    localStorage.clear();
+    GLOBAL.redirectTo('/home');
+  }
 }

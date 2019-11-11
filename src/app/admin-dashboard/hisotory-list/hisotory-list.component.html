@@ -1,0 +1,43 @@
+<div>
+
+  <!-- <div class="container"> -->
+
+  <!-- Breadcrumbs-->
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="#">Historial Global</a>
+    </li>
+  </ol>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="text-center">Reportes</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <table class="table table-hover">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">Movimiento</th>
+              <th scope="col">Tipo de usuario</th>
+              <th scope="col">Nombre y Apellido</th>
+              <th scope="col">Descripcion</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data">
+              <th>{{ item.movement_type }}</th>
+              <td>{{ item.type_user }}</td>
+              <td>{{item.name}}</td>
+              <td>{{item.description}}</td>
+              <td>{{ item.created_at | date:'medium' }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  </div>

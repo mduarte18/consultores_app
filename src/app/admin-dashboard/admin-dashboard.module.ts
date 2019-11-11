@@ -18,9 +18,10 @@ import { ParametersComponent } from './parameters/parameters.component';
 import { ReportsComponent } from './reports/reports.component';
 import { AdvisoryReportsComponent } from './advisory-reports/advisory-reports.component';
 import { BugReportsComponent } from './bug-reports/bug-reports.component';
+import { HisotoryListComponent } from './hisotory-list/hisotory-list.component';
 
 @NgModule({
-  declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent, ParametersComponent, ReportsComponent, AdvisoryReportsComponent, BugReportsComponent],
+  declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent, ParametersComponent, ReportsComponent, AdvisoryReportsComponent, BugReportsComponent, HisotoryListComponent],
   imports: [
     CommonModule,
     AdminDashboardRoutingModule,

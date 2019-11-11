@@ -11,6 +11,7 @@ import { AdminProfileComponent } from './admin-profile/admin-profile.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HisotoryListComponent } from './hisotory-list/hisotory-list.component';
 
 
 const routes: Routes = [{
@@ -52,6 +53,10 @@ const routes: Routes = [{
     {
       path:'bug_reports',
       component:BugReportsComponent
+    },
+    {
+      path:'global_history',
+      component: HisotoryListComponent
     }
   ]
 }];

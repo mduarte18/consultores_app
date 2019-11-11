@@ -124,6 +124,10 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/account_consultant', params, this.httpOptions);
   }
 
+  updateAccountForConsultant(id,params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/account_consultant/'+id, params, this.httpOptions);
+  }
+
   getAccountsForConsultant(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/account_consultant/get_account_consultant', params, this.httpOptions);
   }
@@ -217,5 +221,13 @@ export class GlobalService {
 
   getAllBugs(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/bug_report/get_all_reports', params, this.httpOptions);
+  }
+
+  getGlobalHistory(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/historyuser/global_history', params, this.httpOptions);
+  }
+
+  createUserHistory(params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/historyuser', params, this.httpOptions);
   }
 }

@@ -94,10 +94,37 @@ export class RequestsComponent implements OnInit {
   }
 
   openLink(link) {
-
     console.log('Open Link');
     window.open(link ? link : '', '_blank');
+    this.globalService.createUserHistory({
+      user_id: this.user.id,
+      movement_type: 'Entrada a sala de conferencia',
+      description: 'El usuario ha entrado al link de sala de conferencia, pare recibir su asesoria.' }).subscribe(
+        result =>{
+          console.log('notificacion enviada.',result);
+        },
+        error => {
+          this.toaster.error(error.message, 'Error:');
+          console.error(error);
+        }
+      );
+  }
 
+  send_error(){
+    if(confirm('Prueba')){
+      this.globalService.createUserHistory({
+        user_id: this.user.id,
+        movement_type: 'Enlace Caido',
+        description: 'El usuario no ha podido entrar a la sala de conferencia.' }).subscribe(
+          result =>{
+            console.log('notificacion enviada.',result);
+          },
+          error => {
+            this.toaster.error(error.message, 'Error:');
+            console.error(error);
+          }
+        );
+    }
   }
 
 }

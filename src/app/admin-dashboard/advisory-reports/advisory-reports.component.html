@@ -17,7 +17,7 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <table class="table table-hover">
+        <!-- <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -36,7 +36,37 @@
               <td><button class="btn btn-primary" (click)="openModal(report, item)">Detalles</button></td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
+
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filtrado">
+        </mat-form-field>
+
+        <table mat-table [dataSource]="dataSource">
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> #</th>
+              <td mat-cell *matCellDef="let element" class="text-center mt-2"> {{element.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="consultant_name">
+              <th mat-header-cell *matHeaderCellDef> Nombre y Apellido </th>
+              <td mat-cell *matCellDef="let element"> {{element.name}} {{element.lastname}} </td>
+            </ng-container>
+            <ng-container matColumnDef="created_at">
+              <th mat-header-cell *matHeaderCellDef> Fecha de Reporte </th>
+              <td mat-cell *matCellDef="let element"> {{element.created_at | date:'medium' }} </td>
+            </ng-container>
+            <ng-container matColumnDef="report_title">
+              <th mat-header-cell *matHeaderCellDef> Título </th>
+              <td mat-cell *matCellDef="let element"> {{element.report_title}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> </th>
+                <td mat-cell *matCellDef="let element"><button class="btn btn-primary" (click)="openModal(report, element)">Detalles</button></td>
+              </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
       </div>
     </div>
   </div>

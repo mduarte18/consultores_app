@@ -19,6 +19,10 @@ import { ReportsComponent } from './reports/reports.component';
 import { AdvisoryReportsComponent } from './advisory-reports/advisory-reports.component';
 import { BugReportsComponent } from './bug-reports/bug-reports.component';
 import { HisotoryListComponent } from './hisotory-list/hisotory-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
 
 @NgModule({
   declarations: [DashboardComponent, ApproveConsultantComponent, ApproveBalanceUserComponent, ApproveBalanceConsultantComponent, CreateAdminComponent, AdminProfileComponent, AsidebarComponent, AtopbarComponent, AMainComponent, UsersComponent, ParametersComponent, ReportsComponent, AdvisoryReportsComponent, BugReportsComponent, HisotoryListComponent],
@@ -27,7 +31,11 @@ import { HisotoryListComponent } from './hisotory-list/hisotory-list.component';
     AdminDashboardRoutingModule,
     SharedModuleModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class AdminDashboardModule { }

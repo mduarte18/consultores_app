@@ -1,3 +1,4 @@
+import { GLOBAL } from './../../global/GLOBAL';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Dating } from './../../interfaces/Dating';
 import { Consultant } from './../../interfaces/Consultant';
@@ -27,6 +28,10 @@ export class RequestsComponent implements OnInit {
   public solape: string;
 
   public reportMessage: string;
+
+  public urls: any[];
+
+  public publicUrl = GLOBAL.uploadsUrl;
 
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
@@ -64,12 +69,25 @@ export class RequestsComponent implements OnInit {
   }
 
 
-  open(content, dating) {
+  open(content, dating, consult?: boolean) {
 
     this.solape = dating.solape;
     this.solname = dating.solname;
 
     this.tempDating = dating;
+
+    if (consult && ('Solicitado' === dating.dating_status ||
+      'Aprobada' === dating.dating_status)) {
+      this.globalService.getAllAttached(this.tempDating.id).subscribe(
+        result => {
+          this.urls = result;
+          console.log(this.urls);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
 
     this.modal.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       console.log(result);

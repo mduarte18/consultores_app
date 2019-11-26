@@ -16,8 +16,8 @@ export class GlobalService {
   httpOptions = {
     headers: new HttpHeaders({
       'Access-Control-Allow-Origin': '*',
-      'Authorization': 'authkey',
-      'userid': '1'
+      Authorization: 'authkey',
+      userid: '1'
     })
   };
 
@@ -46,24 +46,24 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/user', user, this.httpOptions);
   }
 
-  getUserHistories(user_id: any): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/historyuser/all_histories', { user_id: user_id }, this.httpOptions);
+  getUserHistories(userId: any): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/historyuser/all_histories', { user_id: userId }, this.httpOptions);
   }
 
-  getConsultantHistories(user_id: any): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/consultanthistory/all_histories', { consultant_id: user_id }, this.httpOptions);
+  getConsultantHistories(consultantId: any): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/consultanthistory/all_histories', { consultant_id: consultantId }, this.httpOptions);
   }
 
   uploadDeposit(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/deposit/upload', params, this.httpOptions);
   }
 
-  getBalanceUser(user_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/balance_user/get_balance', { user_id: user_id }, this.httpOptions);
+  getBalanceUser(userId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/balance_user/get_balance', { user_id: userId }, this.httpOptions);
   }
 
-  getBalanceConsultant(consultant_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/balance_consultant/get_balance', { consultant_id: consultant_id }, this.httpOptions);
+  getBalanceConsultant(consultantId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/balance_consultant/get_balance', { consultant_id: consultantId }, this.httpOptions);
   }
 
   updateUserProfile(user: User): Observable<any> {
@@ -76,7 +76,7 @@ export class GlobalService {
 
   getAllConsultants(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/consultant/all_consultants', params, this.httpOptions);
-  }//all_activate_consultants
+  }// all_activate_consultants
 
   getAllActivateConsultants(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/consultant/all_activate_consultants', params, this.httpOptions);
@@ -90,24 +90,26 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/dating', dating, this.httpOptions);
   }
 
-  getDatingsForConsultant(consultant_id, dating_status): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/dating/datings_by_consultant', { consultant_id: consultant_id, dating_status: dating_status }, this.httpOptions);
+  getDatingsForConsultant(consultantId, datingStatus): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/datings_by_consultant',
+                        { consultant_id: consultantId, dating_status: datingStatus }
+                        , this.httpOptions);
   }
 
-  getDatingsByUser(user_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/dating/datings_by_user', { user_id: user_id }, this.httpOptions);
+  getDatingsByUser(userId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/datings_by_user', { user_id: userId }, this.httpOptions);
   }
 
   responseRequest(dating: Dating): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/dating/response_request', dating, this.httpOptions);
   }
 
-  cancelDating(dating_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/dating/cancelled_dating', { dating_id: dating_id }, this.httpOptions);
+  cancelDating(datingId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/cancelled_dating', { dating_id: datingId }, this.httpOptions);
   }
 
-  finishDating(dating_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/dating/finished_dating', { dating_id: dating_id }, this.httpOptions);
+  finishDating(datingId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating/finished_dating', { dating_id: datingId }, this.httpOptions);
   }
 
   getAllDeposits(params): Observable<any> {
@@ -124,8 +126,8 @@ export class GlobalService {
     return this.httpClient.post(this.apiUrl + '/account_consultant', params, this.httpOptions);
   }
 
-  updateAccountForConsultant(id,params): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/account_consultant/'+id, params, this.httpOptions);
+  updateAccountForConsultant(id, params): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/account_consultant/' + id, params, this.httpOptions);
   }
 
   getAccountsForConsultant(params): Observable<any> {
@@ -151,23 +153,23 @@ export class GlobalService {
   deleteParameters(id, params): Observable<any> {
     return this.httpClient.delete(this.apiUrl + '/parameter/' + id, params);
   }
-  getPaymentsUser(user_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/payment/get_payments_users', { user_id: user_id }, this.httpOptions);
+  getPaymentsUser(userId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/payment/get_payments_users', { user_id: userId }, this.httpOptions);
   }
-  getPaymentsConsultant(consultant_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/payment/get_payments_consultant', { consultant_id: consultant_id }, this.httpOptions);
+  getPaymentsConsultant(consultantId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/payment/get_payments_consultant', { consultant_id: consultantId }, this.httpOptions);
   }
-  getDepositsUser(user_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/deposit/deposit_user', { user_id: user_id }, this.httpOptions);
+  getDepositsUser(userId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/deposit/deposit_user', { user_id: userId }, this.httpOptions);
   }
-  limitFiveDatingUser(user_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/user/limit_five_dating', { user_id: user_id }, this.httpOptions);
+  limitFiveDatingUser(userId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/user/limit_five_dating', { user_id: userId }, this.httpOptions);
   }
-  limitFiveDatingConsultant(consultant_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/consultant/limit_five_dating', { consultant_id: consultant_id }, this.httpOptions);
+  limitFiveDatingConsultant(consultantId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/consultant/limit_five_dating', { consultant_id: consultantId }, this.httpOptions);
   }
-  getRetirementsConsultant(consultant_id): Observable<any> {
-    return this.httpClient.post(this.apiUrl + '/retirement/get_retirement_consultant', { consultant_id: consultant_id }, this.httpOptions);
+  getRetirementsConsultant(consultantId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/retirement/get_retirement_consultant', { consultant_id: consultantId }, this.httpOptions);
   }
 
   reporteDatingForState(): Observable<any> {
@@ -229,5 +231,13 @@ export class GlobalService {
 
   createUserHistory(params): Observable<any> {
     return this.httpClient.post(this.apiUrl + '/historyuser', params, this.httpOptions);
+  }
+
+  sendFiles(formData): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating_attach', formData, this.httpOptions);
+  }
+
+  getAllAttached(datingId): Observable<any> {
+    return this.httpClient.post(this.apiUrl + '/dating_attach/get_all_attached', {dating_id: datingId}, this.httpOptions);
   }
 }

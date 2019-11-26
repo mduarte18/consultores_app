@@ -16,7 +16,7 @@
           <hr class="hr-light">
           <button class="btn btn-link text-center text-primary"
             data-toggle="modal"
-            (click)="open(content,dating)">Ver detalles</button>
+            (click)="open(content,dating,true)">Ver detalles</button>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@
         <div class="form-group">
           <label for="date"><b>Fecha:</b> {{tempDating.for_date}}</label>
         </div>
-        <div class="row text-center">
+        <div class="row">
           <div class="col">
             <div class="form-group">
               <label for="date"><b>Hora inicio:</b> {{tempDating.time_from}}</label>
@@ -72,7 +72,17 @@
             </div>
           </div>
         </div>
-
+        <div class="form-group">
+          <div class="col" *ngIf="urls.length>0">
+            <span><b>Adjuntos: </b></span>
+            <div class="row">
+              <div class="col-3 p-1" *ngFor="let url of urls">
+                <a [href]="publicUrl+url.url" target="_blank" class="btn
+                  btn-link"><i class="far fa-file"></i>&nbsp;Archivo</a>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="form-group">
           <label for="date"><b>Precio Sugerido de la Asesoria.</b></label>
           <input id="price" class="form-control text-right" name="price"
@@ -121,7 +131,8 @@
   <ng-template #report let-modal class="modal fade" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-header">
-      <h4 class="modal-title" id="modal-basic-title">Reportar Resultado - #{{finishedDating.id}} </h4>
+      <h4 class="modal-title" id="modal-basic-title">Reportar Resultado -
+        #{{finishedDating.id}} </h4>
       <button type="button" class="close" aria-label="Close"
         (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
@@ -149,18 +160,22 @@
           </div>
           <div class="col">
             <div class="form-group">
-              <label for="date"><b>Hora de cierre:</b> {{finishedDating.time_up}}</label>
+              <label for="date"><b>Hora de cierre:</b>
+                {{finishedDating.time_up}}</label>
             </div>
           </div>
         </div>
 
         <div class="form-group">
           <label for="date"><b>Observaciones de la asesoria.</b></label>
-          <textarea id="reportMessage" class="form-control" name="reportMessage" [(ngModel)]="reportMessage" placeholder="Describa brevemente su experiencia en esta asesoria."></textarea>
+          <textarea id="reportMessage" class="form-control" name="reportMessage"
+            [(ngModel)]="reportMessage" placeholder="Describa brevemente su
+            experiencia en esta asesoria."></textarea>
         </div>
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-success" (click)="createReport()">Enviar Reporte</button>
+      <button type="button" class="btn btn-success" (click)="createReport()">Enviar
+        Reporte</button>
     </div>
   </ng-template>

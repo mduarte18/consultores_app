@@ -19,7 +19,7 @@
           <div class="d-flex flex-row align-content-center align-items-center
             justify-content-center">
             <button class="btn btn-primary text-center m-1"
-              (click)="open(request_info, dating)">Ver Información</button>
+              (click)="open(request_info, dating, true)">Ver Información</button>
             <button [className]="'Solicitado'===dating.dating_status?'btn
               btn-danger m-1':'d-none'" class="" data-toggle="modal" (click)="open(confirm_cancel, dating)">Cancelar Solicitud</button>
               <button [className]="('Aprobada'===dating.dating_status)?'btn
@@ -81,9 +81,18 @@
         <span><b>Estado: </b> <span
           [className]="'Solicitado'===dating.dating_status?'text-warning':(('Aprobada'===dating.dating_status || 'Finalizada'===dating.dating_status)?'text-success':'text-danger')">{{dating.dating_status}}</span></span><br>
       </div>
+      <div class="m-1" *ngIf="urls.length>0">
+        <span><b>Adjuntos: </b></span>
+        <div class="row">
+          <div class="col-3 p-1" *ngFor="let url of urls" >
+            <a [href]="publicUrl+url.url" target="_blank" class="btn btn-link"><i class="far fa-file"></i>&nbsp;Archivo</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="modal-footer">
+    <button type="button" [className]="'Solicitado'===dating.dating_status?'btn btn-success':(('Aprobada'===dating.dating_status || 'Finalizada'===dating.dating_status)?'btn btn-success':'d-none') "  (click)="open(files_modal,dating)">Añadir Archivos</button>
     <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
   </div>
 </ng-template>
@@ -125,4 +134,30 @@
     <button type="button" class="btn btn-secondary" (click)="close()">Cerrar</button>
     <button type="button" class="btn btn-primary ml-2" (click)="finishedDating()">Aceptar</button>
   </div>
+</ng-template>
+
+<ng-template #files_modal let-modal class="modal fade" tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <h5 class="modal-title" id="modal-basic-title">Añadir archivos adjuntos</h5>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form action="POST" enctype="multipart/form-data" id="formFiles" (submit)="send_files()">
+  <div class="modal-body">
+    <div class="d-flex flex-column">
+      <div> <p>Por favor Adjuntar el o los archivos a continuación.</p></div>
+      <div>
+
+      <input type="file" required name="images" (change)="uploads($event)" multiple></div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
+    <button type="submit" class="btn btn-primary ml-2">Aceptar</button>
+  </div>
+</form>
 </ng-template>

@@ -1,4 +1,4 @@
-import { Dating } from './../../interfaces/Dating';
+import { GLOBAL } from './../../global/GLOBAL';
 import { User } from './../../interfaces/User';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
@@ -16,9 +16,15 @@ export class RequestsComponent implements OnInit {
   public user: User = JSON.parse(localStorage.getItem('user_data'));
   datings$: any;
   dating: any;
+  docs: any;
+  length: any;
+  formdata = new FormData();
+  urls: any[];
+  publicUrl = GLOBAL.uploadsUrl;
+
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
-    private toaster: ToastrService, private modal: NgbModal) {
+              private toaster: ToastrService, private modal: NgbModal) {
     this.getDatings(this.user.id);
   }
 
@@ -40,14 +46,26 @@ export class RequestsComponent implements OnInit {
     );
   }
 
-  open(content: any, dating) {
+  open(content: any, dating, consult?: boolean) {
     this.dating = dating;
+    if (consult && ('Solicitado' === dating.dating_status ||
+      'Aprobada' === dating.dating_status)) {
+      this.globalService.getAllAttached(this.dating.id).subscribe(
+        result => {
+          this.urls = result;
+          console.log(this.urls);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
     this.modal.open(content);
-
   }
 
   close() {
-    this.modal.dismissAll()
+    this.urls = [];
+    this.modal.dismissAll();
   }
 
   cancelledDating() {
@@ -69,7 +87,7 @@ export class RequestsComponent implements OnInit {
         this.toaster.error('Ha ocurrido un error.', 'Error:');
         console.error(error);
       }
-    )
+    );
   }
   finishedDating() {
     this.loader.show();
@@ -90,7 +108,7 @@ export class RequestsComponent implements OnInit {
         this.toaster.error('Ha ocurrido un error.', 'Error:');
         console.error(error);
       }
-    )
+    );
   }
 
   openLink(link) {
@@ -99,32 +117,73 @@ export class RequestsComponent implements OnInit {
     this.globalService.createUserHistory({
       user_id: this.user.id,
       movement_type: 'Entrada a sala de conferencia',
-      description: 'El usuario ha entrado al link de sala de conferencia, pare recibir su asesoria.' }).subscribe(
-        result =>{
-          console.log('notificacion enviada.',result);
+      description: 'El usuario ha entrado al link de sala de conferencia, pare recibir su asesoria.'
+    }).subscribe(
+      result => {
+        console.log('notificacion enviada.', result);
+      },
+      error => {
+        this.toaster.error(error.message, 'Error:');
+        console.error(error);
+      }
+    );
+  }
+
+  send_error() {
+    if (confirm(`Ha ocurrido un error con el sistema de citas, al seleccionar aceptar
+                 se enviara una notificacion al equipo y sera corregido el incidente,
+                 disculpe las molestias.`)) {
+      this.globalService.createUserHistory({
+        user_id: this.user.id,
+        movement_type: 'Enlace Caido',
+        description: 'El usuario no ha podido entrar a la sala de conferencia.'
+      }).subscribe(
+        result => {
+          console.log('notificacion enviada.', result);
         },
         error => {
           this.toaster.error(error.message, 'Error:');
           console.error(error);
         }
       );
+    }
   }
 
-  send_error(){
-    if(confirm('Prueba')){
-      this.globalService.createUserHistory({
-        user_id: this.user.id,
-        movement_type: 'Enlace Caido',
-        description: 'El usuario no ha podido entrar a la sala de conferencia.' }).subscribe(
-          result =>{
-            console.log('notificacion enviada.',result);
-          },
-          error => {
-            this.toaster.error(error.message, 'Error:');
-            console.error(error);
-          }
-        );
+  uploads(event) {
+    console.log(event);
+    this.docs = event.target.files as File;
+    this.length = event.target.files.length as File;
+    console.log(this.docs, this.length);
+
+    for (let i = 0; i < this.length; i++) {
+      if (this.docs[i].size < 5000) {
+        this.formdata.append('docs' + i, this.docs[i], this.docs[i].name);
+        this.formdata.append('length', this.length);
+      } else {
+        this.toaster.error('El archivo es muy grande, solo se admite una tamaño de 5MB por archivo.', 'Error:');
+        this.close();
+        return;
+      }
     }
+  }
+
+  send_files() {
+    console.log('form');
+    this.formdata.append('dating_id', this.dating.id);
+    this.globalService.sendFiles(this.formdata).subscribe(
+      result => {
+        if ('ok' === result.response) {
+          this.toaster.success(`Se han guardado ${result.saved_files} archivos`, 'Guardado');
+        } else {
+          this.toaster.error(`Ha ocurrido un error al guardar los archivos.`, 'Error:');
+        }
+      },
+      error => {
+        this.toaster.error(error.message);
+      }
+    );
+
+    return false;
   }
 
 }

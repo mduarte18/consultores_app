@@ -76,7 +76,7 @@ export class RequestsComponent implements OnInit {
         if ('ok' === response) {
           this.getDatings(this.user.id);
           this.loader.hide();
-          this.toaster.success('Solicitud de asesoria cancelada.', 'Exitoso');
+          this.toaster.success('Solicitud de asesoría cancelada.', 'Exitoso');
         } else {
           this.loader.hide();
           this.toaster.error('No se ha podido cancelar.', 'Error:');
@@ -97,7 +97,7 @@ export class RequestsComponent implements OnInit {
         if ('ok' === response) {
           this.getDatings(this.user.id);
           this.loader.hide();
-          this.toaster.success('Solicitud de asesoria Finalizada.', 'Exitoso');
+          this.toaster.success('Solicitud de asesoría Finalizada.', 'Exitoso');
         } else {
           this.loader.hide();
           this.toaster.error('No se ha podido finalizar.', 'Error:');
@@ -117,10 +117,10 @@ export class RequestsComponent implements OnInit {
     this.globalService.createUserHistory({
       user_id: this.user.id,
       movement_type: 'Entrada a sala de conferencia',
-      description: 'El usuario ha entrado al link de sala de conferencia, pare recibir su asesoria.'
+      description: 'El usuario ha entrado al link de sala de conferencia, pare recibir su asesoría.'
     }).subscribe(
       result => {
-        console.log('notificacion enviada.', result);
+        console.log('notificación enviada.', result);
       },
       error => {
         this.toaster.error(error.message, 'Error:');
@@ -130,8 +130,8 @@ export class RequestsComponent implements OnInit {
   }
 
   send_error() {
-    if (confirm(`Ha ocurrido un error con el sistema de citas, al seleccionar aceptar
-                 se enviara una notificacion al equipo y sera corregido el incidente,
+    if (confirm(`Ha ocurrido un error con el sistema de citas, al selecciónar aceptar
+                 se enviara una notificación al equipo y sera corregido el incidente,
                  disculpe las molestias.`)) {
       this.globalService.createUserHistory({
         user_id: this.user.id,
@@ -139,7 +139,7 @@ export class RequestsComponent implements OnInit {
         description: 'El usuario no ha podido entrar a la sala de conferencia.'
       }).subscribe(
         result => {
-          console.log('notificacion enviada.', result);
+          console.log('notificación enviada.', result);
         },
         error => {
           this.toaster.error(error.message, 'Error:');

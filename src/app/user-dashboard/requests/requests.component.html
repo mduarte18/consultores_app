@@ -3,7 +3,7 @@
   <!-- Breadcrumbs-->
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="#">Asesorias Solicitadas</a>
+      <a href="#">Asesorías Solicitadas</a>
     </li>
   </ol>
 
@@ -23,7 +23,7 @@
             <button [className]="'Solicitado'===dating.dating_status?'btn
               btn-danger m-1':'d-none'" class="" data-toggle="modal" (click)="open(confirm_cancel, dating)">Cancelar Solicitud</button>
               <button [className]="('Aprobada'===dating.dating_status)?'btn
-              btn-success m-1':'d-none'" class="" data-toggle="modal" (click)="open(confirm_finish, dating)">Finalizar Asesoria</button>
+              btn-success m-1':'d-none'" class="" data-toggle="modal" (click)="open(confirm_finish, dating)">Finalizar Asesoría</button>
           </div>
 
         </div>
@@ -47,7 +47,7 @@
   <div class="modal-body">
     <div class="d-flex flex-column">
       <div class="m-1">
-        <span><b>Descripcion del caso: </b> {{dating.summary}}</span><br>
+        <span><b>Descripción del caso: </b> {{dating.summary}}</span><br>
       </div>
       <div class="m-1">
         <span><b>Fecha: </b> {{dating.for_date | date: 'shortDate' }}</span><br>
@@ -101,14 +101,14 @@
   role="dialog"
   aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-header">
-    <h5 class="modal-title" id="modal-basic-title">Confirmar cancelación de asesoria.</h5>
+    <h5 class="modal-title" id="modal-basic-title">Confirmar cancelación de asesoría.</h5>
     <button type="button" class="close" aria-label="Close"
       (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p>¿Esta seguro de Cancelar la cita a asesoria con titulo <b>"{{dating.title}}"</b>?</p>
+    <p>¿Esta seguro de Cancelar la cita a asesoría con titulo <b>"{{dating.title}}"</b>?</p>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-danger" (click)="close()">Cerrar</button>
@@ -120,14 +120,14 @@
   role="dialog"
   aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-header">
-    <h5 class="modal-title" id="modal-basic-title">Confirmar finalizacion y cierre de la asesoria.</h5>
+    <h5 class="modal-title" id="modal-basic-title">Confirmar finalización y cierre de la asesoría.</h5>
     <button type="button" class="close" aria-label="Close"
       (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
   <div class="modal-body">
-    <p>La asesoria <b>"{{dating.title}}"</b> solo debe ser finalizada luego de su fecha estipulada, si esta información es correcta puede proceder.
+    <p>La asesoría <b>"{{dating.title}}"</b> solo debe ser finalizada luego de su fecha estipulada, si esta información es correcta puede proceder.
     Gracias por usar nuestros servicios.</p>
   </div>
   <div class="modal-footer">

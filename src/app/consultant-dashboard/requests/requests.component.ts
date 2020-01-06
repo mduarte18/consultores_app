@@ -35,7 +35,7 @@ export class RequestsComponent implements OnInit {
 
 
   constructor(private globalService: GlobalService, private loader: Ng4LoadingSpinnerService,
-    private toaster: ToastrService, private modal: NgbModal) {
+              private toaster: ToastrService, private modal: NgbModal) {
 
     this.loader.show();
     globalService.getDatingsForConsultant(this.user.id, 'Solicitado').subscribe(
@@ -122,24 +122,23 @@ export class RequestsComponent implements OnInit {
     this.modal.dismissAll();
     this.tempDating = {} as Dating;
     this.finishedDating = {} as Dating;
-    this.solape = ''
-    this.solname = ''
-    this.reportMessage=''
+    this.solape = '';
+    this.solname = '';
+    this.reportMessage = '';
   }
 
   responseRequest(response: string) {
     this.loader.show();
     this.tempDating.dating_status = response;
 
-    if ('Rechazada' === response) {
-      this.tempDating.price = 0;
-    }
-
     this.globalService.responseRequest(this.tempDating).subscribe(
       result => {
-        console.log(result)
+        console.log(result);
         if ('ok' === result) {
           this.toaster.success('Operación exitosa.');
+          if ('Rechazada' === response) {
+            this.tempDating.price = 0;
+          }
           this.close();
           this.loader.hide();
         } else {
@@ -157,7 +156,9 @@ export class RequestsComponent implements OnInit {
   }
   createReport(){
     this.loader.show()
-    this.globalService.createReportForDating({report_title:'Reporte Asesoria #'+this.finishedDating.id,report_message:this.reportMessage,dating_id:this.finishedDating.id}).subscribe(
+    this.globalService.createReportForDating({report_title: 'Reporte Asesoría #' + this.finishedDating.id,
+                                              report_message : this.reportMessage,
+                                              dating_id : this.finishedDating.id}).subscribe(
       result => {
         console.log(result);
         if('success'===result){

@@ -18,7 +18,7 @@
   <div class="row d-flex flex-row justify-content-center">
     <div class="col-5 d-flex justify-content-center align-items-center">
       <button class="btn btn-success w-75" (click)="getConsultantByType('AP')">Asesores
-        de Psicologia</button>
+        de Psicología</button>
     </div>
     <div class="col-5 d-flex justify-content-center align-items-center">
       <button class="btn btn-info w-75" (click)="getConsultantByType('AS')">Asesores
@@ -64,7 +64,7 @@
             <input id="text" class="form-control" name="title" type="title" [(ngModel)]="dating.title" >
           </div>
           <div class="form-group">
-              <label for="date">Descripcion</label>
+              <label for="date">Descripción</label>
               <textarea id="summary" class="form-control" name="summary" [(ngModel)]="dating.summary" ></textarea>
             </div>
             <div class="form-group">
@@ -80,7 +80,7 @@
         </div>
         <div class="col">
             <div class="form-group">
-                <label for="time">Horas de Asesoria</label>
+                <label for="time">Horas de Asesoría</label>
                 <input id="time_up" class="form-control" name="time_up" type="number" [(ngModel)]="time" (change)="setPriceForDating()">
               </div>
         </div>
@@ -111,7 +111,7 @@
   <div class="modal-body">
     <div class="m-2">
     <span><b>Correo electronico: </b> {{consultant.email}}</span><br>
-    <span><b>Horario de Atencion: </b> {{consultant.office_hours_from | convertFrom24To12Format}} - {{consultant.office_hours_to | convertFrom24To12Format}}</span><br>
+    <span><b>Horario de Atención: </b> {{consultant.office_hours_from | convertFrom24To12Format}} - {{consultant.office_hours_to | convertFrom24To12Format}}</span><br>
     </div>
   </div>
   <div class="modal-footer">

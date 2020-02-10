@@ -1,31 +1,33 @@
 <div class="container">
-    <div class="d-flex flex-column m-3">
-      <div>
-         <h1 class="text-center"><i class="fas fa-heartbeat"></i> Ana García Asociados</h1>
-      </div>
-      <div>
-        <h3 class="text-center">Carrera más solicitada</h3>
-      </div>
-      <hr>
-      <div>
-        <table class="table table-bordered">
-          <thead class="thead-dark">
-            <tr>
-              <th>Carrera</th>
-              <th>Mes</th>
-              <th>Año</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of data" >
-              <td>{{item.career}}</td>
-              <td>{{item.mes }}</td>
-              <td>{{item.anio }}</td>
-              <td>{{item.counter}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+  <div class="d-flex flex-column m-3">
+    <div>
+      <h1 class="text-center"><i class="fas fa-heartbeat"></i> Ana García
+        Asociados</h1>
     </div>
+    <div>
+      <h3 class="text-center">Carrera más solicitada</h3>
+    </div>
+    <hr>
+    <div>
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Carrera</th>
+            <th>Mes</th>
+            <th>Año</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of data">
+            <td>{{item.career}}</td>
+            <td>{{item.mes }}</td>
+            <td>{{item.anio }}</td>
+            <td>{{item.counter}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="container"></div>
   </div>
+</div>

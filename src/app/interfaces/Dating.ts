@@ -14,6 +14,7 @@ export interface Dating {
   updated_at?: string;
   solape?:string;
   solname?:string;
+  email?:string;
   conference_room_url?:string;
 
 

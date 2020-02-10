@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { OnlyDigitsDirective } from './only-digits.directive'
+import { HighchartsChartModule } from 'highcharts-angular';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { OnlyDigitsDirective } from './only-digits.directive'
       progressBar: true,
       progressAnimation: 'decreasing',
     }),
-    Ng4LoadingSpinnerModule.forRoot()
+    Ng4LoadingSpinnerModule.forRoot(),
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -60,7 +60,7 @@ export class ApproveBalanceUserComponent implements OnInit {
           this.getAllDeposits();
           this.deposit = {};
           this.loader.hide();
-          this.toaster.success('Saldo de usuario actualzado.');
+          this.toaster.success('Saldo de usuario actualizado.');
         } else {
           this.getAllDeposits();
           this.deposit = {};

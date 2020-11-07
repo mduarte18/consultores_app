@@ -1,8 +1,8 @@
 import { Parameter } from './../interfaces/Parameter';
 export class GLOBAL {
-  // static apiUrl = 'http://localhost:8000/api';
-  static apiUrl = window.location.host.includes('localhost') ? 'http://localhost:8000/api' : 'https://cors-anywhere.herokuapp.com/https://murmuring-river-89792.herokuapp.com/api';
-  static uploadsUrl = window.location.host.includes('localhost') ? 'http://localhost:8000/uploads/' : 'https://murmuring-river-89792.herokuapp.com/uploads/';
+   static apiUrl = 'http://localhost:8000/api';
+  //static apiUrl = window.location.host.includes('localhost') ? 'http://localhost:8000/api' : 'https://limitless-shore-26751.herokuapp.com/api';
+  static uploadsUrl = window.location.host.includes('localhost') ? 'http://localhost:8000/uploads/' : 'https://limitless-shore-26751.herokuapp.com/';
   // static apiUrl = 'https://murmuring-river-89792.herokuapp.com/api';
 
 
